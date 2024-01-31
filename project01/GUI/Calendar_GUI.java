@@ -13,10 +13,10 @@ import DTO.Member_DTO;
 import DTO.Plan_DTO;
 import button.RoundedButton;
 import button.RoundedButton_RC;
-//CalendarDataManagerÀÇ GUI + ¸Ş¸ğ±â´É + ½Ã°è
+//CalendarDataManagerì˜ GUI + ë©”ëª¨ê¸°ëŠ¥ + ì‹œê³„
 public class Calendar_GUI extends Calendar_Manager implements ActionListener{ 
 	JFrame mainFrame;
-	//ÁÂÃøÆÇºÎºĞ(¿É¼ÇÆÇ, ´Ş·Â µî)
+	//ì¢Œì¸¡íŒë¶€ë¶„(ì˜µì…˜íŒ, ë‹¬ë ¥ ë“±)
 	JPanel calOpPanel;
 	RoundedButton_RC todayBut;
 	JLabel todayLab, curMMYYYYLab;
@@ -24,46 +24,46 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 	ListenForCalOpButtons lForCalOpButtons = new ListenForCalOpButtons();
 	JToolBar tool = new JToolBar("Menu");
 	JComboBox<String> indexComboBox = new JComboBox<String>();
-	//ÁÂÃøÆÇ ´Ş·ÂºÎºĞ
+	//ì¢Œì¸¡íŒ ë‹¬ë ¥ë¶€ë¶„
 	JPanel calPanel;
 	JButton weekDaysName[];
 	JButton dateButs[][] = new JButton[6][7];
 	listenForDateButs lForDateButs = new listenForDateButs(); 
 	JPanel infoPanel;
 	JLabel infoClock;
-	//ÁÂÃøÆÇ ÇÏ´ÜºÎºĞ
+	//ì¢Œì¸¡íŒ í•˜ë‹¨ë¶€ë¶„
 	JPanel westBottomPanel = new JPanel();
-	//ÁÂÃøÇÏ´Ü ÀÏ±âÀå °ü·Ã 
+	//ì¢Œì¸¡í•˜ë‹¨ ì¼ê¸°ì¥ ê´€ë ¨ 
 	JTextArea memoArea;
 	JLabel selectedDate;
 	JPanel memoPanel, memoSubPanel;
 	JScrollPane memoAreaSP;
 	RoundedButton_RC saveBut, delBut, clearBut, returnBut, readBut; 
 	String writeNow;
-	//ÁÂÃøÆÇ »ó´Ü ºÎºĞ
-	JTextField tfSearchWord; //°Ë»ö¾î ÀÔ·Â°ø°£
-	JButton findBtn; //ÀÏÁ¤ Ã£±â, ÀÎµ¦½º ÄŞº¸¹Ú½º ¿· ¹öÆ°
-	//¿ìÃøÆÇ ±¸¼º ÆĞ³Î 
+	//ì¢Œì¸¡íŒ ìƒë‹¨ ë¶€ë¶„
+	JTextField tfSearchWord; //ê²€ìƒ‰ì–´ ì…ë ¥ê³µê°„
+	JButton findBtn; //ì¼ì • ì°¾ê¸°, ì¸ë±ìŠ¤ ì½¤ë³´ë°•ìŠ¤ ì˜† ë²„íŠ¼
+	//ìš°ì¸¡íŒ êµ¬ì„± íŒ¨ë„ 
 	JPanel frameSubPanelEastNorth, frameSubPanelEastCenter, frameSubPanelEastBottom;
-	//¿ìÃøÆÇ »ó´Ü ºÎºĞ
+	//ìš°ì¸¡íŒ ìƒë‹¨ ë¶€ë¶„
 	JButton createBtn, myPageBtn, DdayBtn, viewBtn, editBtn, logOutBtn;
 	JLabel buttonInfo4, buttonInfo5, buttonInfo6, buttonInfo7, buttonInfo8,buttonInfo9;
-	//¿ìÃøÆÇ Áß¾Ó ºÎºĞ 
+	//ìš°ì¸¡íŒ ì¤‘ì•™ ë¶€ë¶„ 
 	JPanel eastInfoPanel, viewPanel, createPanel, editPanel, dDayPanel, myPagePanel;
-	JPanel resultPanel;// °Ë»ö°á°ú ³ª¿À´Â °á°ú ÆĞ³Î
+	JPanel resultPanel;// ê²€ìƒ‰ê²°ê³¼ ë‚˜ì˜¤ëŠ” ê²°ê³¼ íŒ¨ë„
 	JLabel infoTitle;
-	JLabel yearLbl1 = new JLabel("³â");		
-	JLabel monthLbl1 = new JLabel("¿ù");	
-	JLabel dayLbl1 = new JLabel("ÀÏ");
-	JLabel hourLbl1 = new JLabel("½Ã");
-	JLabel minLbl1 = new JLabel("ºĞ");
-	JLabel yearLbl2 = new JLabel("³â");		
-	JLabel monthLbl2 = new JLabel("¿ù");	
-	JLabel dayLbl2 = new JLabel("ÀÏ");
-	JLabel hourLbl2 = new JLabel("½Ã");
-	JLabel minLbl2 = new JLabel("ºĞ");
+	JLabel yearLbl1 = new JLabel("ë…„");		
+	JLabel monthLbl1 = new JLabel("ì›”");	
+	JLabel dayLbl1 = new JLabel("ì¼");
+	JLabel hourLbl1 = new JLabel("ì‹œ");
+	JLabel minLbl1 = new JLabel("ë¶„");
+	JLabel yearLbl2 = new JLabel("ë…„");		
+	JLabel monthLbl2 = new JLabel("ì›”");	
+	JLabel dayLbl2 = new JLabel("ì¼");
+	JLabel hourLbl2 = new JLabel("ì‹œ");
+	JLabel minLbl2 = new JLabel("ë¶„");
 	JLabel startDateInfo, endDateInfo, startTimeInfo, endTimeInfo;
-	//¿ìÃøÆÇ viewPanel °ü·Ã
+	//ìš°ì¸¡íŒ viewPanel ê´€ë ¨
 	JList<String> ls;
 	JScrollPane viewSP;
 	JTextArea viewArea;
@@ -76,18 +76,18 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 	DefaultComboBoxModel<Integer> se_dayModel = new DefaultComboBoxModel<Integer>();	
 	StringBuilder scheduleText;
 	int seYear, seMonth, seDay;
-	JLabel yearLbl3 = new JLabel("³â");		
-	JLabel monthLbl3 = new JLabel("¿ù");	
-	JLabel dayLbl3 = new JLabel("ÀÏ");
+	JLabel yearLbl3 = new JLabel("ë…„");		
+	JLabel monthLbl3 = new JLabel("ì›”");	
+	JLabel dayLbl3 = new JLabel("ì¼");
 	RoundedButton_RC viewEventBtn = new RoundedButton_RC("view");
-	//¿ìÃøÆÇ createPanel °ü·Ã
+	//ìš°ì¸¡íŒ createPanel ê´€ë ¨
 	JLabel panelTitle2 = new JLabel("");
 	JTextField tfTitle;
 	JCheckBox allday, imp;
 	JRadioButton type0, type1, type2, type3, type4, oneDay, moreThanTwodays;
 	RoundedButton_RC savePlanBtn = new RoundedButton_RC("save"); 
 	RoundedButton_RC dateBtn = new RoundedButton_RC("Next");
-	ButtonGroup group1, group2; //ÀÏÁ¤Å¸ÀÔ ¶óµğ¿À¹öÆ° ¸ğÀ½
+	ButtonGroup group1, group2; //ì¼ì •íƒ€ì… ë¼ë””ì˜¤ë²„íŠ¼ ëª¨ìŒ
 	Calendar now;
 	JComboBox<Integer> s_year = new JComboBox<Integer>();
 	DefaultComboBoxModel<Integer> s_yearModel = new DefaultComboBoxModel<Integer>();		
@@ -112,53 +112,53 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 	String planTitle, planType;
 	int sYear, sMonth, sDay, sHour, sMin, eYear, eMonth, eDay, eHour, eMin, ad, impo, index;		
 	int year, month, day, hour, min;
-	//¿ìÃøÆÇ resultPanel °ü·Ã
+	//ìš°ì¸¡íŒ resultPanel ê´€ë ¨
 	JTextArea resultArea = new JTextArea();
-	//¿ìÃøÆÇ editPanel °ü·Ã
+	//ìš°ì¸¡íŒ editPanel ê´€ë ¨
 	JLabel subInfo = new JLabel();
 	JFormattedTextField tfNum = new JFormattedTextField(new NumberFormatter());
 	RoundedButton_RC editFindBtn, planUpdateBtn, planDeleteBtn;
-	//¿ìÃøÆÇ dDayPanel °ü·Ã
-	//¿ìÃøÆÇ myPagePanel °ü·Ã
+	//ìš°ì¸¡íŒ dDayPanel ê´€ë ¨
+	//ìš°ì¸¡íŒ myPagePanel ê´€ë ¨
 	JLabel mpTitle, mpName, mpBdate,  mpPass, oldPass, newPass;
 	JTextField tfOldPass, tfNewPass;
 	RoundedButton_RC mpUpdateBtn, mpDeleteBtn;
-	//ÇÏ´ÜºÎºĞ
+	//í•˜ë‹¨ë¶€ë¶„
 	JPanel frameBottomPanel1, frameBottomPanel2;
 	JLabel todaysSentance;
 	JLabel bottomInfo = new JLabel("INFO Check");
-	//»ó¼ö, ¸Ş¼¼Áö
+	//ìƒìˆ˜, ë©”ì„¸ì§€
 	final String WEEK_DAY_NAME[] = { "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT" };
 	final String title = "Dear My Diary ver 1.0 ... Main";
-	final String SaveButMsg1 = " ÆÄÀÏÀÌ MemoData Æú´õ¿¡ ÀúÀåµÇ¾ú½À´Ï´Ù.";
-	final String SaveButMsg2 = "¸ÕÀú ÀÏ±â¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.";
-	final String SaveButMsg3 = "<html><font color=red>ÆÄÀÏÀ» ºÒ·¯¿Ã ¼ö ¾ø½À´Ï´Ù.</html>";
-	final String DelButMsg1 = "ÀÏ±â°¡ »èÁ¦µÇ¾ú½À´Ï´Ù";
-	final String DelButMsg2 = "ÀÏ±â°¡ ¾²¿©ÁöÁö ¾Ê¾Ò°Å³ª ÀÌ¹Ì »èÁ¦µÇ¾ú½À´Ï´Ù.";
-	final String DelButMsg3 = "<html><font color=red>ÆÄÀÏÀ» »èÁ¦ÇÏÁö ¸øÇß½À´Ï´Ù.</html>";
-	final String ClrButMsg1 = "ÅØ½ºÆ®¸¦ ºñ¿ü½À´Ï´Ù.";
-	final String ReturnButMsg1 = "ÅØ½ºÆ®¸¦ º¹±¸Çß½À´Ï´Ù.";
-	final String SaveButMsg4 = "ÀÏÁ¤ÀÌ µî·ÏµÇ¾ú½À´Ï´Ù.";
-	final String SaveButMsg5 = "ÀÏÁ¤ µî·Ï¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù. [´©¶ôµÈ Á¤º¸]";
-	final String EditButMsg1 = "ÀÏÁ¤ Á¤º¸°¡ ¼öÁ¤µÇ¾ú½À´Ï´Ù.";
-	final String EditButMsg2 = "ÀÏÁ¤ ¼öÁ¤¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.";
-	final String DelButMsg4 = "ÀÏÁ¤À» »èÁ¦ÇÏ¿´½À´Ï´Ù.";
-	final String nextButMsg1 = "ÀÌÁ¦ ³¯Â¥¿Í ½Ã°£À» ÀÔ·ÂÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.";
-	final String nextButMsg2 = "´©¶ôµÈ Á¤º¸°¡ ÀÖ½À´Ï´Ù. ÀÔ·Â ÈÄ ´Ù½Ã next¹öÆ°À» ´­·¯ÁÖ¼¼¿ä.";
-	final String ReadButMsg1 = "ÀúÀåÇÑ ÀÏ±â³»¿ëÀ» ºÒ·¯¿Ô½À´Ï´Ù.";
-	final String ReadButMsg2 = "ÀúÀåµÈ ÀÏ±âÆÄÀÏÀÌ ¾ø½À´Ï´Ù.";
-	final String UpdateButMsg1 = "ÀúÀåÇÑ ÀÏ±â³»¿ëÀ» ºÒ·¯¿Ô½À´Ï´Ù.";
-	final String EditButMsg3 = "ºñ¹Ğ¹øÈ£¸¦ ¼öÁ¤ÇÏ¿´½À´Ï´Ù.";
-	final String DelButMsg5 = "È¸¿øÅ»Åğ Ã³¸®µÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.";
+	final String SaveButMsg1 = " íŒŒì¼ì´ MemoData í´ë”ì— ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.";
+	final String SaveButMsg2 = "ë¨¼ì € ì¼ê¸°ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.";
+	final String SaveButMsg3 = "<html><font color=red>íŒŒì¼ì„ ë¶ˆëŸ¬ì˜¬ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.</html>";
+	final String DelButMsg1 = "ì¼ê¸°ê°€ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤";
+	final String DelButMsg2 = "ì¼ê¸°ê°€ ì“°ì—¬ì§€ì§€ ì•Šì•˜ê±°ë‚˜ ì´ë¯¸ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.";
+	final String DelButMsg3 = "<html><font color=red>íŒŒì¼ì„ ì‚­ì œí•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.</html>";
+	final String ClrButMsg1 = "í…ìŠ¤íŠ¸ë¥¼ ë¹„ì› ìŠµë‹ˆë‹¤.";
+	final String ReturnButMsg1 = "í…ìŠ¤íŠ¸ë¥¼ ë³µêµ¬í–ˆìŠµë‹ˆë‹¤.";
+	final String SaveButMsg4 = "ì¼ì •ì´ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤.";
+	final String SaveButMsg5 = "ì¼ì • ë“±ë¡ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤. [ëˆ„ë½ëœ ì •ë³´]";
+	final String EditButMsg1 = "ì¼ì • ì •ë³´ê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.";
+	final String EditButMsg2 = "ì¼ì • ìˆ˜ì •ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.";
+	final String DelButMsg4 = "ì¼ì •ì„ ì‚­ì œí•˜ì˜€ìŠµë‹ˆë‹¤.";
+	final String nextButMsg1 = "ì´ì œ ë‚ ì§œì™€ ì‹œê°„ì„ ì…ë ¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.";
+	final String nextButMsg2 = "ëˆ„ë½ëœ ì •ë³´ê°€ ìˆìŠµë‹ˆë‹¤. ì…ë ¥ í›„ ë‹¤ì‹œ nextë²„íŠ¼ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”.";
+	final String ReadButMsg1 = "ì €ì¥í•œ ì¼ê¸°ë‚´ìš©ì„ ë¶ˆëŸ¬ì™”ìŠµë‹ˆë‹¤.";
+	final String ReadButMsg2 = "ì €ì¥ëœ ì¼ê¸°íŒŒì¼ì´ ì—†ìŠµë‹ˆë‹¤.";
+	final String UpdateButMsg1 = "ì €ì¥í•œ ì¼ê¸°ë‚´ìš©ì„ ë¶ˆëŸ¬ì™”ìŠµë‹ˆë‹¤.";
+	final String EditButMsg3 = "ë¹„ë°€ë²ˆí˜¸ë¥¼ ìˆ˜ì •í•˜ì˜€ìŠµë‹ˆë‹¤.";
+	final String DelButMsg5 = "íšŒì›íƒˆí‡´ ì²˜ë¦¬ë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.";
 
-	//ÆùÆ® ¸ğÀ½
+	//í°íŠ¸ ëª¨ìŒ
 	Font f1 = new Font("Arial", Font.PLAIN, 12);
 	Font f2 = new Font("Arial", Font.PLAIN, 15);
 	Font f3 = new Font("Arial", Font.BOLD, 17); 
-	Font f4 = new Font("¸¼Àº °íµñ", Font.BOLD, 13); 
-	Font f5 = new Font("¸¼Àº °íµñ", Font.BOLD, 17); 
+	Font f4 = new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 13); 
+	Font f5 = new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 17); 
 
-	//DAO,DTO°ü·Ã
+	//DAO,DTOê´€ë ¨
 	Plan_DAO pdao = new Plan_DAO();
 	Member_DAO mdao = new Member_DAO();
 
@@ -169,7 +169,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 			}
 		});
 	}
-	public Calendar_GUI(){ //±¸¼º¿ä¼Ò ¼øÀ¸·Î Á¤·ÄµÇ¾î ÀÖÀ½. °¢ ÆÇ³Ú »çÀÌ¿¡ ºóÁÙ·Î ±¸º°
+	public Calendar_GUI(){ //êµ¬ì„±ìš”ì†Œ ìˆœìœ¼ë¡œ ì •ë ¬ë˜ì–´ ìˆìŒ. ê° íŒë„¬ ì‚¬ì´ì— ë¹ˆì¤„ë¡œ êµ¬ë³„
 
 		mainFrame = new JFrame(title);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -178,34 +178,34 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 		mainFrame.setLocationRelativeTo(null);
 		mainFrame.setResizable(false);
 		//		mainFrame.setIconImage(icon.getImage());
-		try{  //LookAndFeel Windows ½ºÅ¸ÀÏ Àû¿ë
+		try{  //LookAndFeel Windows ìŠ¤íƒ€ì¼ ì ìš©
 			UIManager.setLookAndFeel ("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 			SwingUtilities.updateComponentTreeUI(mainFrame) ;
 		}catch(Exception e){
 			bottomInfo.setText("ERROR : LookAndFeel setting failed");
 		}
 		calOpPanel = new JPanel();
-		//¿À´Ã ³¯Â¥·Î µ¹¾Æ¿À´Â ¹öÆ° ¹× ¿À´Ã ³¯Â¥ ·¦ Ãß°¡
+		//ì˜¤ëŠ˜ ë‚ ì§œë¡œ ëŒì•„ì˜¤ëŠ” ë²„íŠ¼ ë° ì˜¤ëŠ˜ ë‚ ì§œ ë© ì¶”ê°€
 		todayBut = new RoundedButton_RC("Today");
 		todayBut.setToolTipText("Today");
 		todayBut.addActionListener(lForCalOpButtons);
 		todayLab = new JLabel(today.get(Calendar.YEAR)+"/"+(today.get(Calendar.MONTH)+1)
 				+"/"+today.get(Calendar.DAY_OF_MONTH));
-		//ÇöÀç ½Ã°£ ¾Ë·ÁÁÖ´Â ÆÇ³Ú Ãß°¡
+		//í˜„ì¬ ì‹œê°„ ì•Œë ¤ì£¼ëŠ” íŒë„¬ ì¶”ê°€
 		infoPanel = new JPanel();
 		infoPanel.setLayout(new BorderLayout());
 		infoClock = new JLabel("", SwingConstants.LEFT);
 		infoClock.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		infoPanel.add(infoClock, BorderLayout.NORTH);
 		infoClock.setForeground(new Color(238, 161, 28));
-		//ÀÛ³â,Áö³­´Ş,´ÙÀ½´Ş,³»³â ÀÌµ¿ ¹öÆ° Ãß°¡
+		//ì‘ë…„,ì§€ë‚œë‹¬,ë‹¤ìŒë‹¬,ë‚´ë…„ ì´ë™ ë²„íŠ¼ ì¶”ê°€
 		lYearBut = new RoundedButton("<<");
 		lYearBut.setToolTipText("Previous Year");
 		lYearBut.addActionListener(lForCalOpButtons);
 		lMonBut = new RoundedButton("<");
 		lMonBut.setToolTipText("Previous Month");
 		lMonBut.addActionListener(lForCalOpButtons);
-		//Áß¾Ó ÇöÀç ¿ù Ç¥±â
+		//ì¤‘ì•™ í˜„ì¬ ì›” í‘œê¸°
 		curMMYYYYLab = new JLabel("<html><table width=100><tr><th><font size=5>"
 				+((calMonth+1)<10?"&nbsp;":"")+(calMonth+1)+" / "+calYear
 				+"</th></tr></table></html>");
@@ -223,16 +223,16 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 		curMMYYYYLab.setBounds(130, 60, 100, 30);
 		nMonBut.setBounds(245, 60, 50, 30);
 		nYearBut.setBounds(305, 60, 50, 30);
-		infoPanel.setBounds(170, 13, 100, 30); //½Ç½Ã°£ ½Ã°è
+		infoPanel.setBounds(170, 13, 100, 30); //ì‹¤ì‹œê°„ ì‹œê³„
 
-		calOpPanel.add(todayBut); //¿À´Ã³¯Â¥ È®ÀÎ¹öÆ°
-		calOpPanel.add(todayLab); //¿À´Ã³¯Â¥ Ç¥±â·¦
-		calOpPanel.add(lYearBut); //ÀÏ³âÀü ÀÌµ¿ ¹öÆ°
-		calOpPanel.add(lMonBut); //ÇÑ´ŞÀü ÀÌµ¿ ¹öÆ°
-		calOpPanel.add(curMMYYYYLab); //ÇöÀç ¿ù Ç¥±â·¦
-		calOpPanel.add(nMonBut); //´ÙÀ½´Ş ÀÌµ¿ ¹öÆ°
-		calOpPanel.add(nYearBut); //³»³â ÀÌµ¿ ¹öÆ°
-		//ÆùÆ® »ö»ó Ãß°¡
+		calOpPanel.add(todayBut); //ì˜¤ëŠ˜ë‚ ì§œ í™•ì¸ë²„íŠ¼
+		calOpPanel.add(todayLab); //ì˜¤ëŠ˜ë‚ ì§œ í‘œê¸°ë©
+		calOpPanel.add(lYearBut); //ì¼ë…„ì „ ì´ë™ ë²„íŠ¼
+		calOpPanel.add(lMonBut); //í•œë‹¬ì „ ì´ë™ ë²„íŠ¼
+		calOpPanel.add(curMMYYYYLab); //í˜„ì¬ ì›” í‘œê¸°ë©
+		calOpPanel.add(nMonBut); //ë‹¤ìŒë‹¬ ì´ë™ ë²„íŠ¼
+		calOpPanel.add(nYearBut); //ë‚´ë…„ ì´ë™ ë²„íŠ¼
+		//í°íŠ¸ ìƒ‰ìƒ ì¶”ê°€
 		todayBut.setForeground(new Color(0, 1, 0)); 
 		todayLab.setForeground(new Color(61, 105, 220)); 
 		lYearBut.setForeground(Color.black);
@@ -240,7 +240,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 		curMMYYYYLab.setForeground(new Color(61, 105, 220)); 
 		nMonBut.setForeground(Color.black);
 		nYearBut.setForeground(Color.black);
-		//´Ş·ÂÆÇ ºÎºĞ - ¸ŞÀÎ
+		//ë‹¬ë ¥íŒ ë¶€ë¶„ - ë©”ì¸
 		calPanel=new JPanel();
 		weekDaysName = new JButton[7];
 		for(int i=0 ; i<CAL_WIDTH ; i++){
@@ -270,9 +270,9 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 		}
 		calPanel.setLayout(new GridLayout(0,7,2,2));
 		calPanel.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-		showCal(); // ´Ş·ÂÀ» Ç¥½Ã
+		showCal(); // ë‹¬ë ¥ì„ í‘œì‹œ
 
-		//calOpPanel, calPanel, infoPanelÀ»  frameSubPanelWest¿¡ ¹èÄ¡
+		//calOpPanel, calPanel, infoPanelì„  frameSubPanelWestì— ë°°ì¹˜
 		JPanel frameSubPanelWest = new JPanel();
 		frameSubPanelWest.setLayout(null);
 		calOpPanel.setBounds(10, 0, 690, 100);
@@ -288,13 +288,13 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 		frameSubPanelWest.setPreferredSize(frameSubPanelWestSize);
 		frameSubPanelWest.setBounds(0,0,560,730);
 
-		//ÁÂÃøÆÇ ºó °÷¿¡ °Ë»öÃ¢, °Ë»ö¹öÆ°, ÀÎµ¦½º ¹öÆ° Ãß°¡ 
+		//ì¢Œì¸¡íŒ ë¹ˆ ê³³ì— ê²€ìƒ‰ì°½, ê²€ìƒ‰ë²„íŠ¼, ì¸ë±ìŠ¤ ë²„íŠ¼ ì¶”ê°€ 
 		tfSearchWord = new JTextField();
 		tfSearchWord.setBounds(370, 60, 116, 30);
 		calOpPanel.add(tfSearchWord);
 		tfSearchWord.setColumns(10);
 
-		//ÁÂÃø ÆĞ³Î °Ë»ö¹öÆ° Ãß°¡
+		//ì¢Œì¸¡ íŒ¨ë„ ê²€ìƒ‰ë²„íŠ¼ ì¶”ê°€
 		ImageIcon find = new ImageIcon("./Image/icon_search(25).png");
 		findBtn = new JButton(find);
 		findBtn.setBounds(490, 63, 25, 25);
@@ -303,9 +303,9 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 		findBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("[ÀÌº¥Æ® ¹ß»ı] - Find ¹öÆ°");
-				//°Ë»öÃ¢¿¡ ¾´ ³»¿ëÀ» Åä´ë·Î select arrayList ÇÑ ³»¿ë ÆÇ³Ú¿¡ º¸¿©ÁÖ±â
-				//JList·Î Ãâ·ÂÇÏ°í ¸¶¿ì½º·Î Å¬¸¯ÇÑ ÇØ´ç ¸®½ºÆ® ÀÎµ¦½º ¹øÈ£ ÂüÁ¶ÇØ¼­ ´õºí Å¬¸¯ ½Ã »ó¼¼º¸±â ±â´É ±¸Çö
+				System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - Find ë²„íŠ¼");
+				//ê²€ìƒ‰ì°½ì— ì“´ ë‚´ìš©ì„ í† ëŒ€ë¡œ select arrayList í•œ ë‚´ìš© íŒë„¬ì— ë³´ì—¬ì£¼ê¸°
+				//JListë¡œ ì¶œë ¥í•˜ê³  ë§ˆìš°ìŠ¤ë¡œ í´ë¦­í•œ í•´ë‹¹ ë¦¬ìŠ¤íŠ¸ ì¸ë±ìŠ¤ ë²ˆí˜¸ ì°¸ì¡°í•´ì„œ ë”ë¸” í´ë¦­ ì‹œ ìƒì„¸ë³´ê¸° ê¸°ëŠ¥ êµ¬í˜„
 				JLabel resultInfo = new JLabel("");
 				resultArea = new JTextArea();
 				resultArea.setText("");
@@ -341,7 +341,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 				myPagePanel.setVisible(false);			
 			}
 		});
-		//ÀÎµ¦½º °ü·Ã ÄŞº¸¹Ú½º
+		//ì¸ë±ìŠ¤ ê´€ë ¨ ì½¤ë³´ë°•ìŠ¤
 		indexComboBox.setBounds(410, 15, 120, 30);
 		indexComboBox.addItem("view All");
 		indexComboBox.addItem("Task");
@@ -352,7 +352,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 		calOpPanel.add(indexComboBox);
 		calOpPanel.add(tool, BorderLayout.NORTH);		
 
-		//ÀÏ±â±â´É °ü·Ã ÄÚµå
+		//ì¼ê¸°ê¸°ëŠ¥ ê´€ë ¨ ì½”ë“œ
 		selectedDate = new JLabel("<Html><font size=3>"+today.get(Calendar.YEAR)
 		+"/"+(today.get(Calendar.MONTH)+1)+"/"+today.get(Calendar.DAY_OF_MONTH)
 		+"&nbsp;(Today)</html>", SwingConstants.LEFT);
@@ -373,7 +373,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 		clearBut = new RoundedButton_RC("Clear");
 		returnBut = new RoundedButton_RC("Return");
 		readBut = new RoundedButton_RC("Read");
-		//ÀÏ±âÀÛ¼º ÈÄ txtÆÄÀÏ·Î ÀúÀå
+		//ì¼ê¸°ì‘ì„± í›„ txtíŒŒì¼ë¡œ ì €ì¥
 		saveBut.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				try {		
@@ -400,7 +400,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 				showCal();
 			}					
 		});
-		//¼±ÅÃÀÏÀÌ ÆÄÀÏ¸íÀÎ ÀÏ±âÆÄÀÏ »èÁ¦
+		//ì„ íƒì¼ì´ íŒŒì¼ëª…ì¸ ì¼ê¸°íŒŒì¼ ì‚­ì œ
 		delBut.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				memoArea.setText("");
@@ -414,7 +414,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 				else bottomInfo.setText(DelButMsg2);					
 			}					
 		});
-		//memoArea¿¡ ÀÔ·ÂÇÑ ÅØ½ºÆ® ÃÊ±âÈ­
+		//memoAreaì— ì…ë ¥í•œ í…ìŠ¤íŠ¸ ì´ˆê¸°í™”
 		clearBut.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				writeNow = memoArea.getText();
@@ -422,14 +422,14 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 				bottomInfo.setText(ClrButMsg1);
 			}
 		});
-		//ÃÊ±âÈ­ÇÑ ÅØ½ºÆ® º¹±¸
+		//ì´ˆê¸°í™”í•œ í…ìŠ¤íŠ¸ ë³µêµ¬
 		returnBut.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				memoArea.setText(writeNow);
 				bottomInfo.setText(ReturnButMsg1);
 			}
 		});
-		//¼±ÅÃÀÏÀÇ ÀÏ±âÆÄÀÏ ³»¿ë ÀĞ¾î¿À±â
+		//ì„ íƒì¼ì˜ ì¼ê¸°íŒŒì¼ ë‚´ìš© ì½ì–´ì˜¤ê¸°
 		readBut.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				File f =new File("MemoData/"+calYear+((calMonth+1)<10?"0":"")
@@ -473,35 +473,35 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 		memoPanel.setBounds(10,530,530,200);
 		frameSubPanelWest.add(memoPanel);
 
-		//ÁÂÃø ÇÏ´Ü ÆĞ³Î - ¾È³»¹®±¸ Ãâ·Â¿ë
+		//ì¢Œì¸¡ í•˜ë‹¨ íŒ¨ë„ - ì•ˆë‚´ë¬¸êµ¬ ì¶œë ¥ìš©
 		frameBottomPanel2 = new JPanel();
 		frameBottomPanel2.setBounds(0,730,820,40);
 		frameBottomPanel2.add(bottomInfo);
-		//¿ìÃø »ó´Ü ÆĞ³Î - ¹öÆ° Ãß°¡
+		//ìš°ì¸¡ ìƒë‹¨ íŒ¨ë„ - ë²„íŠ¼ ì¶”ê°€
 		frameSubPanelEastNorth = new JPanel();
 		frameSubPanelEastNorth.setBounds(0, 0, 425, 55);
 		frameSubPanelEastNorth.setLayout(null);
-		//¿ìÃø Áß¾Ó ÆĞ³Î - ÆĞ³ÎÀüÈ¯¿ë 
+		//ìš°ì¸¡ ì¤‘ì•™ íŒ¨ë„ - íŒ¨ë„ì „í™˜ìš© 
 		frameSubPanelEastCenter = new JPanel();
 		frameSubPanelEastCenter.setBounds(560, 0, 425, 730);
 		frameSubPanelEastCenter.setLayout(null);
-		//¿ìÃø ÇÏ´Ü ÆĞ³Î 
+		//ìš°ì¸¡ í•˜ë‹¨ íŒ¨ë„ 
 		frameSubPanelEastBottom = new JPanel();
 		frameSubPanelEastBottom.setLayout(null);
 		frameSubPanelEastBottom.setBounds(820, 720, 165, 45);	
-		//¿ìÃø »ó´Ü ¾È³»¹®±¸ ¹× ¸Ş´º¹öÆ° 6°¡Áö Ãß°¡
+		//ìš°ì¸¡ ìƒë‹¨ ì•ˆë‚´ë¬¸êµ¬ ë° ë©”ë‰´ë²„íŠ¼ 6ê°€ì§€ ì¶”ê°€
 		JLabel buttonInfo1 = new JLabel("   select");
 		JLabel buttonInfo2 = new JLabel("Button");
 		JLabel buttonInfo3 = new JLabel(">>>");
 		buttonInfo1.setBounds(0,10,50,35);
 		buttonInfo2.setBounds(55,10,40,35);
 		buttonInfo3.setBounds(100,10,40,35);
-		buttonInfo4 = new JLabel("view"); //Æ¯Á¤ÀÏÁ¤ °Ë»ö ±â´É
-		buttonInfo5 = new JLabel(" new"); //ÀÏÁ¤ µî·Ï ±â´É
-		buttonInfo6 = new JLabel(" edit"); //ÀÏÁ¤ ¼öÁ¤, »èÁ¦ ±â´É
-		buttonInfo7 = new JLabel("D-day"); //µğµ¥ÀÌ È®ÀÎ ±â´É
-		buttonInfo8 = new JLabel("mypage"); //³»Á¤º¸°ü¸®(È®ÀÎ,ºñ¹Ğ¹øÈ£ ¼öÁ¤,Å»Åğ)±â´É
-		buttonInfo9 = new JLabel("logout"); //·Î±×¾Æ¿ô ±â´É
+		buttonInfo4 = new JLabel("view"); //íŠ¹ì •ì¼ì • ê²€ìƒ‰ ê¸°ëŠ¥
+		buttonInfo5 = new JLabel(" new"); //ì¼ì • ë“±ë¡ ê¸°ëŠ¥
+		buttonInfo6 = new JLabel(" edit"); //ì¼ì • ìˆ˜ì •, ì‚­ì œ ê¸°ëŠ¥
+		buttonInfo7 = new JLabel("D-day"); //ë””ë°ì´ í™•ì¸ ê¸°ëŠ¥
+		buttonInfo8 = new JLabel("mypage"); //ë‚´ì •ë³´ê´€ë¦¬(í™•ì¸,ë¹„ë°€ë²ˆí˜¸ ìˆ˜ì •,íƒˆí‡´)ê¸°ëŠ¥
+		buttonInfo9 = new JLabel("logout"); //ë¡œê·¸ì•„ì›ƒ ê¸°ëŠ¥
 		buttonInfo4.setBounds(140,40,30,15);
 		buttonInfo5.setBounds(185,40,30,15);
 		buttonInfo6.setBounds(230,40,30,15);
@@ -544,55 +544,55 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 		frameSubPanelEastNorth.add(myPageBtn);
 		frameSubPanelEastNorth.add(logOutBtn);
 
-		//¿ìÃø Áß¾Ó ÆĞ³Î - ±âº»ÆÇ
+		//ìš°ì¸¡ ì¤‘ì•™ íŒ¨ë„ - ê¸°ë³¸íŒ
 		eastInfoPanel = new JPanel(new CardLayout());
 		eastInfoPanel.setLayout(null);
 		eastInfoPanel.setBounds(10,80,405,610);
 		frameSubPanelEastCenter.add(eastInfoPanel);
-		//¿ìÃø Áß¾Ó ÆĞ³Î ÀüÈ¯ ÁØºñ
+		//ìš°ì¸¡ ì¤‘ì•™ íŒ¨ë„ ì „í™˜ ì¤€ë¹„
 		viewPanel = new JPanel();
 		viewPanel.setLayout(null);
-		viewPanel.setBackground(new Color(241, 241, 177)); //¿¬³ë¶û»ö
+		viewPanel.setBackground(new Color(241, 241, 177)); //ì—°ë…¸ë‘ìƒ‰
 		viewPanel.setBounds(0,0,405,610); 
 
 		resultPanel = new JPanel();
 		resultPanel.setLayout(null);
-		resultPanel.setBackground(new Color(213, 247, 204)); //¿¬ÃÊ·Ï
+		resultPanel.setBackground(new Color(213, 247, 204)); //ì—°ì´ˆë¡
 		resultPanel.setBounds(0,0,405,610); 
 
 		createPanel = new JPanel();
 		createPanel.setLayout(null);
-		createPanel.setBackground(new Color(191, 216, 240)); //¿¬ÇÏ´Ã»ö
+		createPanel.setBackground(new Color(191, 216, 240)); //ì—°í•˜ëŠ˜ìƒ‰
 		createPanel.setBounds(0,0,405,610); 
 
 		editPanel = new JPanel();
 		editPanel.setLayout(null);
-		editPanel.setBackground(new Color(224, 214, 241)); //¿¬º¸¶ó
+		editPanel.setBackground(new Color(224, 214, 241)); //ì—°ë³´ë¼
 		editPanel.setBounds(0,0,405,610); 
 
 		dDayPanel = new JPanel();
 		dDayPanel.setLayout(null);
-		dDayPanel.setBackground(new Color(239, 214, 241)); //¿¬ÇÎÅ©
+		dDayPanel.setBackground(new Color(239, 214, 241)); //ì—°í•‘í¬
 		dDayPanel.setBounds(0,0,405,610); 
 
 		myPagePanel = new JPanel();
 		myPagePanel.setLayout(null);
-		myPagePanel.setBackground(new Color(246, 233, 213)); //¿¬ÁÖÈ²
+		myPagePanel.setBackground(new Color(246, 233, 213)); //ì—°ì£¼í™©
 		myPagePanel.setBounds(0,0,405,610); 
 
-		eastInfoPanel.add(viewPanel); //´Ş·Â¿¡ Å¬¸¯ÇÑ ³¯ ÀÏÁ¤º¸±â ÆĞ³Î
-		eastInfoPanel.add(resultPanel); //°Ë»ö°á°úº¸±â ÆĞ³Î
-		eastInfoPanel.add(createPanel); //ÀÏÁ¤ µî·Ï ÆĞ³Î
-		eastInfoPanel.add(editPanel); //ÀÏÁ¤ ¼öÁ¤,»èÁ¦ ÆĞ³Î
-		eastInfoPanel.add(dDayPanel); //µğµ¥ÀÌ º¸±â ÆĞ³Î(Event Ä«Å×°í¸® ÇØ´ç ¿À´Ã ±âÁØÀ¸·Î Âß ³ª¿­)
-		eastInfoPanel.add(myPagePanel);//³»Á¤º¸ °ü¸® ÆĞ³Î(È¸¿ø°¡ÀÔ Ã¢Ã³·³ ¼¼ÆÃÇØ¼­ ¼öÁ¤, ¾Æ·¡ Å»Åğ¹öÆ°Ãß°¡)
+		eastInfoPanel.add(viewPanel); //ë‹¬ë ¥ì— í´ë¦­í•œ ë‚  ì¼ì •ë³´ê¸° íŒ¨ë„
+		eastInfoPanel.add(resultPanel); //ê²€ìƒ‰ê²°ê³¼ë³´ê¸° íŒ¨ë„
+		eastInfoPanel.add(createPanel); //ì¼ì • ë“±ë¡ íŒ¨ë„
+		eastInfoPanel.add(editPanel); //ì¼ì • ìˆ˜ì •,ì‚­ì œ íŒ¨ë„
+		eastInfoPanel.add(dDayPanel); //ë””ë°ì´ ë³´ê¸° íŒ¨ë„(Event ì¹´í…Œê³ ë¦¬ í•´ë‹¹ ì˜¤ëŠ˜ ê¸°ì¤€ìœ¼ë¡œ ì­‰ ë‚˜ì—´)
+		eastInfoPanel.add(myPagePanel);//ë‚´ì •ë³´ ê´€ë¦¬ íŒ¨ë„(íšŒì›ê°€ì… ì°½ì²˜ëŸ¼ ì„¸íŒ…í•´ì„œ ìˆ˜ì •, ì•„ë˜ íƒˆí‡´ë²„íŠ¼ì¶”ê°€)
 
-		//¿ìÃø ÇÏ´Ü¿¡ ·Î°í Ãß°¡
+		//ìš°ì¸¡ í•˜ë‹¨ì— ë¡œê³  ì¶”ê°€
 		ImagePanel Logo = new ImagePanel(new ImageIcon(
 				"C:\\SRC\\JAVA\\Test1127\\Image\\TitleLogo(150_48).png").getImage());
 		frameSubPanelEastBottom.add(Logo);
 
-		//Å« Á¶°¢ÆĞ³Î Ãß°¡
+		//í° ì¡°ê°íŒ¨ë„ ì¶”ê°€
 		mainFrame.setLayout(null);
 		mainFrame.add(frameSubPanelWest);
 		frameSubPanelEastCenter.add(frameSubPanelEastNorth);
@@ -600,7 +600,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 		mainFrame.add(frameSubPanelEastBottom);
 		mainFrame.add(frameBottomPanel2);
 
-		//¹è°æ»ö º¯°æ
+		//ë°°ê²½ìƒ‰ ë³€ê²½
 		mainFrame.setBackground(Color.white);
 		calPanel.setBackground(Color.white);
 		calOpPanel.setBackground(Color.white);
@@ -614,7 +614,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 		frameSubPanelEastCenter.setBackground(Color.white);
 		frameSubPanelEastBottom.setBackground(Color.white);
 
-		//¹öÆ° µî ÄÄÆ÷³ÍÆ® ¾×¼Ç Ã³¸®
+		//ë²„íŠ¼ ë“± ì»´í¬ë„ŒíŠ¸ ì•¡ì…˜ ì²˜ë¦¬
 		todayBut.addActionListener(this); 
 		lYearBut.addActionListener(this);
 		lMonBut.addActionListener(this);
@@ -626,16 +626,16 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 
 		viewArea = new JTextArea();//(20,5);
 
-		//¾×¼ÇÃ³¸®
+		//ì•¡ì…˜ì²˜ë¦¬
 		dateBtn.addActionListener(new ActionListener() {
 			boolean isActionPerformed = false; 
 			public void actionPerformed(ActionEvent e) {
 				if (!isActionPerformed) {
 					isActionPerformed = true; 
 					if (Login_Frame.chkLog) {
-						System.out.println("[ÀÌº¥Æ® ¹ß»ı] - next ¹öÆ°");
-						if(!allday.isSelected()) { //Á¾ÀÏX
-							if(oneDay.isSelected()) { //ÇÏ·ç
+						System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - next ë²„íŠ¼");
+						if(!allday.isSelected()) { //ì¢…ì¼X
+							if(oneDay.isSelected()) { //í•˜ë£¨
 								bottomInfo.setText(nextButMsg1);
 								s_year.setVisible(true);		
 								s_month.setVisible(true);			
@@ -663,8 +663,8 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 								minLbl2.setVisible(true);	
 								savePlanBtn.setVisible(true);
 							}
-						}else if(allday.isSelected()) { //Á¾ÀÏO
-							if(oneDay.isSelected()) { //ÇÏ·ç - startdate¸¸ true
+						}else if(allday.isSelected()) { //ì¢…ì¼O
+							if(oneDay.isSelected()) { //í•˜ë£¨ - startdateë§Œ true
 								bottomInfo.setText(nextButMsg1);
 								s_year.setVisible(true);		
 								s_month.setVisible(true);			
@@ -691,7 +691,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 								hourLbl2.setVisible(false);
 								minLbl2.setVisible(false);	
 								savePlanBtn.setVisible(true);
-							}else if(moreThanTwodays.isSelected()) { //2ÀÏÀÌ»ó(±â°£)
+							}else if(moreThanTwodays.isSelected()) { //2ì¼ì´ìƒ(ê¸°ê°„)
 								bottomInfo.setText(nextButMsg1);
 								s_year.setVisible(true);		
 								s_month.setVisible(true);			
@@ -733,7 +733,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 				if (!isActionPerformed) {
 					isActionPerformed = true; 
 					if (Login_Frame.chkLog) {
-						System.out.println("[ÀÌº¥Æ® ¹ß»ı] - savePlan ¹öÆ°");				
+						System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - savePlan ë²„íŠ¼");				
 						Plan_DTO dto1 = new Plan_DTO();
 						sYear = (Integer)s_year.getSelectedItem();			
 						sMonth = (Integer)s_month.getSelectedItem();	
@@ -745,17 +745,17 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 						sMin = (Integer)s_min.getSelectedItem();	
 						eHour = (Integer)e_hour.getSelectedItem();			
 						eMin = (Integer)e_min.getSelectedItem();	
-						if(!allday.isSelected()) { //Á¾ÀÏX
+						if(!allday.isSelected()) { //ì¢…ì¼X
 							if(oneDay.isSelected()) { 
-								//ÇÏ·ç - startdate, startime, endtime//enddateÆ÷ÇÔx
+								//í•˜ë£¨ - startdate, startime, endtime//enddateí¬í•¨x
 								eYear = 77;		
 								eMonth = 77;	
 								eDay = 77;	
 								ad = 0;
 							}
-						}else if(allday.isSelected()) { //Á¾ÀÏO
+						}else if(allday.isSelected()) { //ì¢…ì¼O
 							ad = 1;
-							if(oneDay.isSelected()) { //ÇÏ·ç - startdate¸¸ Æ÷ÇÔ
+							if(oneDay.isSelected()) { //í•˜ë£¨ - startdateë§Œ í¬í•¨
 								eYear = 77;		
 								eMonth = 77;	
 								eDay = 77;
@@ -764,7 +764,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 								eHour = 77;			
 								eMin = 77;	
 							}else if(moreThanTwodays.isSelected()) { 
-								//2ÀÏÀÌ»ó(±â°£)  - startdate, enddate //½Ã°£Æ÷ÇÔx
+								//2ì¼ì´ìƒ(ê¸°ê°„)  - startdate, enddate //ì‹œê°„í¬í•¨x
 								sHour = 77;	
 								sMin = 77;
 								eHour = 77;			
@@ -775,7 +775,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 						else impo = 0;
 						planTitle = tfTitle.getText();	
 						dto1.setTitle(planTitle);
-						dto1.setAllday(ad); //Á¾ÀÏ¿©ºÎ Ã¼Å©(Ã¼Å©-1, ¹ÌÃ¼Å©-0)
+						dto1.setAllday(ad); //ì¢…ì¼ì—¬ë¶€ ì²´í¬(ì²´í¬-1, ë¯¸ì²´í¬-0)
 						dto1.setImp(impo); //
 						dto1.setType(planType);
 						dto1.setS_year(sYear);
@@ -790,7 +790,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 						dto1.setE_min(eMin);
 						dto1.setW_id(Login_Frame.getLogID());
 						pdao.insert(dto1);
-						bottomInfo.setText(SaveButMsg4); //µî·Ï ¿Ï·á ¾È³» ¸Ş¼¼Áö
+						bottomInfo.setText(SaveButMsg4); //ë“±ë¡ ì™„ë£Œ ì•ˆë‚´ ë©”ì„¸ì§€
 						return;
 					}
 				}
@@ -803,7 +803,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (Login_Frame.chkLog) {
-					System.out.println("[ÀÌº¥Æ® ¹ß»ı] - Edit ¹öÆ°");
+					System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - Edit ë²„íŠ¼");
 					panelTitle2.setText("edit your Event");
 					panelTitle2.setBounds(25,10,150,30);
 					panelTitle2.setFont(f3);
@@ -834,7 +834,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 					editFindBtn.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							System.out.println("[ÀÌº¥Æ® ¹ß»ı] - EditFind ¹öÆ°(num°Ë»ö)");			
+							System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - EditFind ë²„íŠ¼(numê²€ìƒ‰)");			
 							int a = Integer.parseInt(tfNum.getText());
 							Plan_DTO b = pdao.selectOne1(a);
 							resultArea.setText(b.prt());
@@ -854,14 +854,14 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 							planDeleteBtn.addActionListener(new ActionListener() {
 								@Override
 								public void actionPerformed(ActionEvent e) {
-									System.out.println("[ÀÌº¥Æ® ¹ß»ı] - PlanDelete ¹öÆ°");	
+									System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - PlanDelete ë²„íŠ¼");	
 								}
 							});
 							
 							planUpdateBtn.addActionListener(new ActionListener() {
 								@Override
 								public void actionPerformed(ActionEvent e) {
-									System.out.println("[ÀÌº¥Æ® ¹ß»ı] - PlanUpdate ¹öÆ°");	
+									System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - PlanUpdate ë²„íŠ¼");	
 								}
 							});
 
@@ -878,11 +878,11 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 			}
 		});	
 
-		DdayBtn.addActionListener(new ActionListener() { //plan_dto¿¡¼­ prt()¸Ş¼­µå Ãß°¡(dday¿ë)
+		DdayBtn.addActionListener(new ActionListener() { //plan_dtoì—ì„œ prt()ë©”ì„œë“œ ì¶”ê°€(ddayìš©)
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (Login_Frame.chkLog) {
-					System.out.println("[ÀÌº¥Æ® ¹ß»ı] - D-DAY ¹öÆ°");
+					System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - D-DAY ë²„íŠ¼");
 					panelTitle2.setText(
 							"check your D-DAY, "+mdao.selectOne1(Login_Frame.getLogID()).getName()+" !");
 					panelTitle2.setBounds(25,10,250,30);
@@ -920,14 +920,14 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (Login_Frame.chkLog) {
-					System.out.println("[ÀÌº¥Æ® ¹ß»ı] - My Page ¹öÆ°");
+					System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - My Page ë²„íŠ¼");
 					mpTitle = new JLabel(Login_Frame.getLogID()+" 's Info");
 					mpTitle.setFont(f3);
 					mpTitle.setForeground(new Color(58, 137, 226 ));
 					mpName = new JLabel("Name : "+mdao.selectOne1(Login_Frame.getLogID()).getName());
 					mpBdate = new JLabel("Birthdate(yymmdd) : "+mdao.selectOne1(Login_Frame.getLogID()).getbDate());
 					mpPass = new JLabel("Password : "+mdao.selectOne1(Login_Frame.getLogID()).getPass());
-					JLabel updateInfo = new JLabel("If you want change Password, please type here ¡é");
+					JLabel updateInfo = new JLabel("If you want change Password, please type here â†“");
 					updateInfo.setForeground(new Color(58, 137, 226 ));
 					oldPass = new JLabel("your Password : ");
 					newPass = new JLabel("new Password : ");
@@ -973,7 +973,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 					mpUpdateBtn.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							System.out.println("[ÀÌº¥Æ® ¹ß»ı] - Pass change ¹öÆ°");
+							System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - Pass change ë²„íŠ¼");
 							Member_DTO mdto = mdao.selectOne1(Login_Frame.getLogID());
 							if(tfOldPass.getText().equals(mdao.selectOne1(Login_Frame.getLogID()).getPass())) {
 								if(!tfOldPass.getText().equals(tfNewPass.getText())) {
@@ -988,7 +988,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 					mpDeleteBtn.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							System.out.println("[ÀÌº¥Æ® ¹ß»ı] - leave ¹öÆ°");
+							System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - leave ë²„íŠ¼");
 							String nowPass = JOptionPane.showInputDialog("Please type your Password here");
 							if(nowPass.equals(mdao.selectOne1(Login_Frame.getLogID()).getPass())) {
 								mdao.delete(Login_Frame.getLogID());
@@ -1010,28 +1010,28 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (Login_Frame.chkLog) {
-					if(indexComboBox.getSelectedIndex() == 0) { //ÀüÃ¼º¸±â(view All)
-						indexComboBox.setBackground(new Color(218, 72, 72)); //¿¬»¡°­
+					if(indexComboBox.getSelectedIndex() == 0) { //ì „ì²´ë³´ê¸°(view All)
+						indexComboBox.setBackground(new Color(218, 72, 72)); //ì—°ë¹¨ê°•
 					} else if(indexComboBox.getSelectedIndex() == 1) { //Task
-						indexComboBox.setBackground(new Color(180, 218, 72)); //¿¬ÃÊ·Ï
+						indexComboBox.setBackground(new Color(180, 218, 72)); //ì—°ì´ˆë¡
 					} else if(indexComboBox.getSelectedIndex() == 2) { //Event
-						indexComboBox.setBackground(new Color(162, 72, 218)); //º¸¶ó
+						indexComboBox.setBackground(new Color(162, 72, 218)); //ë³´ë¼
 					} else if(indexComboBox.getSelectedIndex() == 3) { //Appointment
-						indexComboBox.setBackground(new Color(72, 152, 218)); //¹°»ö
+						indexComboBox.setBackground(new Color(72, 152, 218)); //ë¬¼ìƒ‰
 					} else if(indexComboBox.getSelectedIndex() == 4) { //etc.
-						indexComboBox.setBackground(new Color(72, 218, 175)); //¿¡¸Ş¶öµå
+						indexComboBox.setBackground(new Color(72, 218, 175)); //ì—ë©”ë„ë“œ
 					}
 				}
 			} 
 		});	
 
-		// viewBtn¿¡ ´ëÇÑ ActionListener µî·Ï
+		// viewBtnì— ëŒ€í•œ ActionListener ë“±ë¡
 		viewBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				handleViewButtonAction();
 			}
 		});
-		// viewEventBtn¿¡ ´ëÇÑ ActionListener µî·Ï
+		// viewEventBtnì— ëŒ€í•œ ActionListener ë“±ë¡
 		viewEventBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				handleViewEventButtonAction();
@@ -1045,9 +1045,9 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 
 
 		mainFrame.setVisible(true);
-		focusToday(); //ÇöÀç ³¯Â¥¿¡ focus¸¦ ÁÜ (mainFrame.setVisible(true) ÀÌÈÄ¿¡ ¹èÄ¡ÇØ¾ßÇÔ)
+		focusToday(); //í˜„ì¬ ë‚ ì§œì— focusë¥¼ ì¤Œ (mainFrame.setVisible(true) ì´í›„ì— ë°°ì¹˜í•´ì•¼í•¨)
 
-		//Thread ÀÛµ¿(½Ã°è, bottomMsg ÀÏÁ¤½Ã°£ÈÄ »èÁ¦)
+		//Thread ì‘ë™(ì‹œê³„, bottomMsg ì¼ì •ì‹œê°„í›„ ì‚­ì œ)
 		ThreadControl threadCnl = new ThreadControl();
 		threadCnl.start();	
 	}
@@ -1057,7 +1057,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 			if (allday.isSelected()) moreThanTwodays.setVisible(true);
 			else moreThanTwodays.setVisible(false);
 		}
-		if(e.getSource() == type1) { //ÀÏÁ¤ Å¸ÀÔ ÀúÀå
+		if(e.getSource() == type1) { //ì¼ì • íƒ€ì… ì €ì¥
 			planType = "Task";	
 		} else if(e.getSource() == type2) {
 			planType = "Anniversary";
@@ -1065,12 +1065,12 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 			planType = "Appointment";
 		} else if(e.getSource() == type4) {
 			planType = "etc.";
-			//·Î±×ÀÎ »óÅÂ ¾Æ´Ï¾îµµ ·Î±×¾Æ¿ô ¹öÆ°Àº ´­·¯¼­ ³ª°¡µµ·Ï Ã³¸®
+			//ë¡œê·¸ì¸ ìƒíƒœ ì•„ë‹ˆì–´ë„ ë¡œê·¸ì•„ì›ƒ ë²„íŠ¼ì€ ëˆŒëŸ¬ì„œ ë‚˜ê°€ë„ë¡ ì²˜ë¦¬
 		}	
 		if(e.getSource() == createBtn) {
 			if (Login_Frame.chkLog) {
-				System.out.println("[ÀÌº¥Æ® ¹ß»ı] - create ¹öÆ°");
-				//Á¦¸ñÀÔ·Â¶õ
+				System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - create ë²„íŠ¼");
+				//ì œëª©ì…ë ¥ë€
 				panelTitle2.setBounds(10,10,150,30);
 				panelTitle2.setFont(f3);
 				panelTitle2.setText("create new Event");
@@ -1078,7 +1078,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 				JLabel titleInfo = new JLabel("Title*");
 				titleInfo.setBounds(10, 40, 50, 30);
 				tfTitle = new JTextField();
-				tfTitle.setBackground(new Color(240, 213, 178 )); //ÀÔ·ÂÃ¢ ¹è°æ»ö ÁøÁÖÈ²»ö
+				tfTitle.setBackground(new Color(240, 213, 178 )); //ì…ë ¥ì°½ ë°°ê²½ìƒ‰ ì§„ì£¼í™©ìƒ‰
 				tfTitle.setBounds(70,40,200,30);
 				tfTitle.setFont(f3);
 
@@ -1121,12 +1121,12 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 				required.setFont(f2);
 				required.setForeground(Color.red);
 
-				//½ÃÀÛÀÏ, ½ÃÀÛ½Ã°£, Á¾·áÀÏ, Á¾·á½Ã°£ ±â´É	
-				now = Calendar.getInstance();	//ÇöÀç ³¯Â¥		
+				//ì‹œì‘ì¼, ì‹œì‘ì‹œê°„, ì¢…ë£Œì¼, ì¢…ë£Œì‹œê°„ ê¸°ëŠ¥	
+				now = Calendar.getInstance();	//í˜„ì¬ ë‚ ì§œ		
 				year = now.get(Calendar.YEAR);		
 				month = now.get(Calendar.MONTH)+1;		
-				day = now.get(Calendar.DATE); //³ªÁß¿¡ ¼öÁ¤ÇÊ¿äÇÔ(¼±ÅÃÇÑ ¿ù¿¡ ¸Â°Ô ¸¶Áö¸·ÀÏ ÃÖ´ë°ªÀÌ ³ª¿Àµµ·Ï)
-				//int lastDate = now.getActualMaximum(Calendar.DAY_OF_MONTH);	//±× ´ŞÀÇ ¸¶Áö¸· ³¯
+				day = now.get(Calendar.DATE); //ë‚˜ì¤‘ì— ìˆ˜ì •í•„ìš”í•¨(ì„ íƒí•œ ì›”ì— ë§ê²Œ ë§ˆì§€ë§‰ì¼ ìµœëŒ€ê°’ì´ ë‚˜ì˜¤ë„ë¡)
+				//int lastDate = now.getActualMaximum(Calendar.DAY_OF_MONTH);	//ê·¸ ë‹¬ì˜ ë§ˆì§€ë§‰ ë‚ 
 				hour = 23;
 				min = 59;
 
@@ -1135,13 +1135,13 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 					e_yearModel.addElement(i);
 				}		
 				s_year.setModel(s_yearModel);		
-				s_year.setSelectedItem(year);	//ÇöÀç ³âµµ ¼±ÅÃ		
+				s_year.setSelectedItem(year);	//í˜„ì¬ ë…„ë„ ì„ íƒ		
 				sYear = (int) s_year.getSelectedItem();
 				s_year.setBounds(10, 300, 60, 30);
 				yearLbl1.setBounds(75, 300, 15, 30);
 
 				e_year.setModel(e_yearModel);		
-				e_year.setSelectedItem(year);	//ÇöÀç ³âµµ ¼±ÅÃ		
+				e_year.setSelectedItem(year);	//í˜„ì¬ ë…„ë„ ì„ íƒ		
 				eYear = (int) e_year.getSelectedItem();
 				e_year.setBounds(10, 460, 60, 30);
 				yearLbl2.setBounds(75, 460, 15, 30);
@@ -1210,7 +1210,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 				e_min.setBounds(100, 540, 50, 30);
 				minLbl2.setBounds(155, 540, 15, 30);
 
-				//½ÃÀÛÀÏ, ½ÃÀÛ½Ã°£, Á¾·áÀÏ, Á¾·á½Ã°£ GUI
+				//ì‹œì‘ì¼, ì‹œì‘ì‹œê°„, ì¢…ë£Œì¼, ì¢…ë£Œì‹œê°„ GUI
 				startDateInfo = new JLabel("Start_date : ");
 				startDateInfo.setFont(f1);
 				startDateInfo.setBounds(10,260,70,30);
@@ -1227,7 +1227,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 				endTimeInfo.setFont(f1);
 				endTimeInfo.setBounds(10,500,70,30);
 
-				//µî·Ï¹öÆ° ´©¸£¸é ÀÏ°ı ÀúÀå
+				//ë“±ë¡ë²„íŠ¼ ëˆ„ë¥´ë©´ ì¼ê´„ ì €ì¥
 				savePlanBtn.setBounds(310,570,70,30);
 				createPanel.removeAll();
 				createPanel.add(panelTitle2);
@@ -1243,33 +1243,33 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 				createPanel.add(type2);
 				createPanel.add(type3);
 				createPanel.add(type4);
-				createPanel.add(dateBtn); //next¹öÆ°
+				createPanel.add(dateBtn); //nextë²„íŠ¼
 				createPanel.add(required);
 
 				createPanel.add(startDateInfo);
 				createPanel.add(s_year);
-				createPanel.add(yearLbl1);//³â
+				createPanel.add(yearLbl1);//ë…„
 				createPanel.add(s_month);
-				createPanel.add(monthLbl1);	//¿ù
+				createPanel.add(monthLbl1);	//ì›”
 				createPanel.add(s_day);	
-				createPanel.add(dayLbl1); //ÀÏ
+				createPanel.add(dayLbl1); //ì¼
 				createPanel.add(endDateInfo);
 				createPanel.add(e_year);
-				createPanel.add(yearLbl2);//³â	
+				createPanel.add(yearLbl2);//ë…„	
 				createPanel.add(e_month);
-				createPanel.add(monthLbl2);	//¿ù
+				createPanel.add(monthLbl2);	//ì›”
 				createPanel.add(e_day);	
-				createPanel.add(dayLbl2); //ÀÏ	
+				createPanel.add(dayLbl2); //ì¼	
 				createPanel.add(startTimeInfo);
 				createPanel.add(s_hour);
-				createPanel.add(hourLbl1); //½Ã
+				createPanel.add(hourLbl1); //ì‹œ
 				createPanel.add(s_min);		
-				createPanel.add(minLbl1); //ºĞ	
+				createPanel.add(minLbl1); //ë¶„	
 				createPanel.add(endTimeInfo);
 				createPanel.add(e_hour);
-				createPanel.add(hourLbl2); //½Ã	
+				createPanel.add(hourLbl2); //ì‹œ	
 				createPanel.add(e_min);
-				createPanel.add(minLbl2); //ºĞ	
+				createPanel.add(minLbl2); //ë¶„	
 				createPanel.add(savePlanBtn);
 
 				mainFrame.repaint();
@@ -1331,10 +1331,10 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 		}
 
 		/*		if(e.getSource() == viewBtn) {
-			if (Login_Frame.chkLog) { // && viewArea != nullÁ¶°ÇÀÌ ÇÊ¿äÇÑÁö È®ÀÎÇÊ¿ä
-				System.out.println("[ÀÌº¥Æ® ¹ß»ı] - menu view ¹öÆ°");
-				//GUI °ü·Ã - ³¯Â¥ ÀÔ·Â¹Ş¾Æ¼­ ÇØ´çÀÏ¿¡ ´ëÇÑ ÀÏÁ¤ º¸¿©ÁÖ±â	
-				now = Calendar.getInstance();	//ÇöÀç ³¯Â¥		
+			if (Login_Frame.chkLog) { // && viewArea != nullì¡°ê±´ì´ í•„ìš”í•œì§€ í™•ì¸í•„ìš”
+				System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - menu view ë²„íŠ¼");
+				//GUI ê´€ë ¨ - ë‚ ì§œ ì…ë ¥ë°›ì•„ì„œ í•´ë‹¹ì¼ì— ëŒ€í•œ ì¼ì • ë³´ì—¬ì£¼ê¸°	
+				now = Calendar.getInstance();	//í˜„ì¬ ë‚ ì§œ		
 				year = now.get(Calendar.YEAR);		
 				month = now.get(Calendar.MONTH)+1;		
 				day = now.get(Calendar.DATE); 
@@ -1342,7 +1342,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 					se_yearModel.addElement(i);
 				}		
 				se_year.setModel(se_yearModel);		
-				se_year.setSelectedItem(year);	//ÇöÀç ³âµµ ¼±ÅÃ		
+				se_year.setSelectedItem(year);	//í˜„ì¬ ë…„ë„ ì„ íƒ		
 				seYear = (int) se_year.getSelectedItem();
 				se_year.setBounds(25, 30, 60, 30);
 				yearLbl3.setBounds(90, 30, 15, 30);
@@ -1378,11 +1378,11 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 				viewPanel.removeAll();
 				viewArea.add(noInfo);
 				viewPanel.add(se_year);				
-				viewPanel.add(yearLbl3);//³â
+				viewPanel.add(yearLbl3);//ë…„
 				viewPanel.add(se_month);				
-				viewPanel.add(monthLbl3);//¿ù
+				viewPanel.add(monthLbl3);//ì›”
 				viewPanel.add(se_day);				
-				viewPanel.add(dayLbl3);//ÀÏ
+				viewPanel.add(dayLbl3);//ì¼
 				viewPanel.add(viewEventBtn);
 				viewPanel.add(viewSP);	
 				viewPanel.add(viewArea);
@@ -1401,35 +1401,35 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 		}*/
 		/*	if(e.getSource() == viewEventBtn) {
 			if (Login_Frame.chkLog && viewArea != null) {
-				System.out.println("[ÀÌº¥Æ® ¹ß»ı] - view ¹öÆ°");
-				//dao °ü·Ã ´Ş·Â¿¡ Æ¯Á¤ ³¯Â¥¹Ú½º Å¬¸¯ ÈÄ view¹öÆ° ´©¸£¸é ÇØ´çÀÏ ÀÏÁ¤ÀÌ ³ª¿Àµµ·Ï ¼³Á¤
+				System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - view ë²„íŠ¼");
+				//dao ê´€ë ¨ ë‹¬ë ¥ì— íŠ¹ì • ë‚ ì§œë°•ìŠ¤ í´ë¦­ í›„ viewë²„íŠ¼ ëˆ„ë¥´ë©´ í•´ë‹¹ì¼ ì¼ì •ì´ ë‚˜ì˜¤ë„ë¡ ì„¤ì •
 				ArrayList<Plan_DTO> list = pdao.selectsearch1(seYear, seMonth, seDay);
-				if(!list.isEmpty()) { //¼±ÅÃÀÏ¿¡ ÀÏÁ¤ÀÌ ÀÖ´Â °æ¿ì
+				if(!list.isEmpty()) { //ì„ íƒì¼ì— ì¼ì •ì´ ìˆëŠ” ê²½ìš°
 					scheduleText = new StringBuilder();
 					for (Plan_DTO plan : list) {
 						scheduleText.append(plan.prt()).append("\n");
 					}
 					viewArea.setText(scheduleText.toString()); //
-				}else { //¼±ÅÃÀÏ¿¡ ÀÏÁ¤ÀÌ ¾ø´Â °æ¿ì
-					noInfo.setText("ÇØ´ç ³¯Â¥¿¡´Â ÀÏÁ¤ÀÌ ¾ø½À´Ï´Ù.");
+				}else { //ì„ íƒì¼ì— ì¼ì •ì´ ì—†ëŠ” ê²½ìš°
+					noInfo.setText("í•´ë‹¹ ë‚ ì§œì—ëŠ” ì¼ì •ì´ ì—†ìŠµë‹ˆë‹¤.");
 				}
 			}
 		}	*/
 		if(e.getSource() == logOutBtn) {
-			System.out.println("[ÀÌº¥Æ® ¹ß»ı] - LogOut ¹öÆ°");
-			//·Î±×ÀÎÇÑ Á¤º¸ flagº¯¼ö·Î µÎ°í false·Î º¯°æÇÏ±â
-			//Main_FrameÃ¢À¸·Î µ¹¾Æ°¡°í ±âÁ¸ Ã¢ ´İ±â
-			Login_Frame.chkLog = false; //·Î±×¾Æ¿ôÃ³¸®
-			mainFrame.setVisible(false); //±âÁ¸ È­¸é ´İ±â
+			System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - LogOut ë²„íŠ¼");
+			//ë¡œê·¸ì¸í•œ ì •ë³´ flagë³€ìˆ˜ë¡œ ë‘ê³  falseë¡œ ë³€ê²½í•˜ê¸°
+			//Main_Frameì°½ìœ¼ë¡œ ëŒì•„ê°€ê³  ê¸°ì¡´ ì°½ ë‹«ê¸°
+			Login_Frame.chkLog = false; //ë¡œê·¸ì•„ì›ƒì²˜ë¦¬
+			mainFrame.setVisible(false); //ê¸°ì¡´ í™”ë©´ ë‹«ê¸°
 			new Main_Frame();
 		}	
 	}	
 
 	private void handleViewButtonAction() {
-		if (Login_Frame.chkLog) { // && viewArea != nullÁ¶°ÇÀÌ ÇÊ¿äÇÑÁö È®ÀÎÇÊ¿ä	
-			System.out.println("[ÀÌº¥Æ® ¹ß»ı] - menu view ¹öÆ°");
-			//GUI °ü·Ã - ³¯Â¥ ÀÔ·Â¹Ş¾Æ¼­ ÇØ´çÀÏ¿¡ ´ëÇÑ ÀÏÁ¤ º¸¿©ÁÖ±â	
-			now = Calendar.getInstance();	//ÇöÀç ³¯Â¥		
+		if (Login_Frame.chkLog) { // && viewArea != nullì¡°ê±´ì´ í•„ìš”í•œì§€ í™•ì¸í•„ìš”	
+			System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - menu view ë²„íŠ¼");
+			//GUI ê´€ë ¨ - ë‚ ì§œ ì…ë ¥ë°›ì•„ì„œ í•´ë‹¹ì¼ì— ëŒ€í•œ ì¼ì • ë³´ì—¬ì£¼ê¸°	
+			now = Calendar.getInstance();	//í˜„ì¬ ë‚ ì§œ		
 			year = now.get(Calendar.YEAR);		
 			month = now.get(Calendar.MONTH)+1;		
 			day = now.get(Calendar.DATE); 
@@ -1437,7 +1437,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 				se_yearModel.addElement(i);
 			}		
 			se_year.setModel(se_yearModel);		
-			se_year.setSelectedItem(year);	//ÇöÀç ³âµµ ¼±ÅÃ		
+			se_year.setSelectedItem(year);	//í˜„ì¬ ë…„ë„ ì„ íƒ		
 			seYear = (int) se_year.getSelectedItem();
 			se_year.setBounds(25, 30, 60, 30);
 			yearLbl3.setBounds(90, 30, 15, 30);
@@ -1473,11 +1473,11 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 			viewPanel.removeAll();
 			viewArea.add(noInfo);
 			viewPanel.add(se_year);				
-			viewPanel.add(yearLbl3);//³â
+			viewPanel.add(yearLbl3);//ë…„
 			viewPanel.add(se_month);				
-			viewPanel.add(monthLbl3);//¿ù
+			viewPanel.add(monthLbl3);//ì›”
 			viewPanel.add(se_day);				
-			viewPanel.add(dayLbl3);//ÀÏ
+			viewPanel.add(dayLbl3);//ì¼
 			viewPanel.add(viewEventBtn);
 			viewPanel.add(viewSP);	
 			viewPanel.add(viewArea);
@@ -1497,8 +1497,8 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 
 	private void handleViewEventButtonAction() {
 		if (Login_Frame.chkLog && viewArea != null) {
-			//¾Õ¿¡ Ã¼Å©¹Ú½º ¿©·¯°³ ¼³Á¤ ÈÄ view¹öÆ° ´©¸£¸é ÀÔ·Â¹Ş¾Æ¾ßÇÏ´Â ³¯Â¥, ½Ã°£ ±¸¼º´ë·Î ³ª¿Àµµ·Ï ¼³Á¤
-			System.out.println("[ÀÌº¥Æ® ¹ß»ı] - view ¹öÆ°");
+			//ì•ì— ì²´í¬ë°•ìŠ¤ ì—¬ëŸ¬ê°œ ì„¤ì • í›„ viewë²„íŠ¼ ëˆ„ë¥´ë©´ ì…ë ¥ë°›ì•„ì•¼í•˜ëŠ” ë‚ ì§œ, ì‹œê°„ êµ¬ì„±ëŒ€ë¡œ ë‚˜ì˜¤ë„ë¡ ì„¤ì •
+			System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - view ë²„íŠ¼");
 			ArrayList<Plan_DTO> list = pdao.selectsearch1(seYear, seMonth, seDay);
 			if(!list.isEmpty()) {
 				scheduleText = new StringBuilder();
@@ -1507,7 +1507,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 				}
 				viewArea.setText(scheduleText.toString());
 			}else {
-				noInfo.setText("ÇØ´ç ³¯Â¥¿¡´Â ÀÏÁ¤ÀÌ ¾ø½À´Ï´Ù.");
+				noInfo.setText("í•´ë‹¹ ë‚ ì§œì—ëŠ” ì¼ì •ì´ ì—†ìŠµë‹ˆë‹¤.");
 			}
 		}
 	}	
@@ -1531,7 +1531,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 				}
 				else dateButs[i][j].setText("<html><font color="+fontColor+">"+calDates[i][j]+"</font></html>");
 
-				JLabel todayMark = new JLabel("<html><font color=orange>££</html>");
+				JLabel todayMark = new JLabel("<html><font color=orange>ï¼ƒ</html>");
 				dateButs[i][j].removeAll();
 				if(calMonth == today.get(Calendar.MONTH) &&
 						calYear == today.get(Calendar.YEAR) &&
@@ -1596,7 +1596,7 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 				}
 			}
 			if(!(k ==0 && l == 0)) calDayOfMon = calDates[k][l]; 
-			//today¹öÆ°À» ´­·¶À»¶§µµ ÀÌ actionPerformedÇÔ¼ö°¡ ½ÇÇàµÇ±â ¶§¹®¿¡ ³ÖÀ½
+			//todayë²„íŠ¼ì„ ëˆŒë €ì„ë•Œë„ ì´ actionPerformedí•¨ìˆ˜ê°€ ì‹¤í–‰ë˜ê¸° ë•Œë¬¸ì— ë„£ìŒ
 			cal = new GregorianCalendar(calYear,calMonth,calDayOfMon);
 			String dDayString = new String();
 			int dDay=((int)((cal.getTimeInMillis() - today.getTimeInMillis())/1000/60/60/24));
@@ -1651,27 +1651,27 @@ public class Calendar_GUI extends Calendar_Manager implements ActionListener{
 		}
 	}
 	public void createDayStart(){		
-		s_day.setVisible(false);	//¼û±â±â		
-		e_day.setVisible(false);	//¼û±â±â		
+		s_day.setVisible(false);	//ìˆ¨ê¸°ê¸°		
+		e_day.setVisible(false);	//ìˆ¨ê¸°ê¸°		
 
 		dayPrint((Integer)s_year.getSelectedItem(), (Integer)s_month.getSelectedItem());		
-		s_day.setVisible(true);	//ÆĞ³Î ÀçÃâ·Â		
+		s_day.setVisible(true);	//íŒ¨ë„ ì¬ì¶œë ¥		
 
 		dayPrint((Integer)e_year.getSelectedItem(), (Integer)e_month.getSelectedItem());		
-		e_day.setVisible(true);	//ÆĞ³Î ÀçÃâ·Â	
+		e_day.setVisible(true);	//íŒ¨ë„ ì¬ì¶œë ¥	
 	}		
 	public void dayPrint(int y, int m){		
-		Calendar cal = Calendar.getInstance(); //Calendar ÀÚ·áÇüÀº new·Î °´Ã¼»ı¼º ºÒ°¡ÇÔ		
-		cal.set(y, m-1, 1);	//Ãâ·ÂÇÒ Ã¹³¯ÀÇ °´Ã¼ ¸¸µç´Ù.		
-		int week = cal.get(Calendar.DAY_OF_WEEK);	//1ÀÏ¿¡ ´ëÇÑ ¿äÀÏ	ÀÏ¿äÀÏ : 0		
-		int lastDate = cal.getActualMaximum(Calendar.DAY_OF_MONTH);	//±× ´ŞÀÇ ¸¶Áö¸· ³¯		
-		for(int i=1; i<week; i++){	//³¯Â¥ Ãâ·Â Àü±îÁöÀÇ °ø¹é Ãâ·Â			
+		Calendar cal = Calendar.getInstance(); //Calendar ìë£Œí˜•ì€ newë¡œ ê°ì²´ìƒì„± ë¶ˆê°€í•¨		
+		cal.set(y, m-1, 1);	//ì¶œë ¥í•  ì²«ë‚ ì˜ ê°ì²´ ë§Œë“ ë‹¤.		
+		int week = cal.get(Calendar.DAY_OF_WEEK);	//1ì¼ì— ëŒ€í•œ ìš”ì¼	ì¼ìš”ì¼ : 0		
+		int lastDate = cal.getActualMaximum(Calendar.DAY_OF_MONTH);	//ê·¸ ë‹¬ì˜ ë§ˆì§€ë§‰ ë‚ 		
+		for(int i=1; i<week; i++){	//ë‚ ì§œ ì¶œë ¥ ì „ê¹Œì§€ì˜ ê³µë°± ì¶œë ¥			
 			//s_day.add(new JLabel(" "));	
 			//e_day.add(new JLabel(" "));		
 		}		
 		for(int i=1; i<=lastDate; i++){			
 			JLabel lbl = new JLabel(String.valueOf(i), JLabel.CENTER);			
-			cal.set(y, m-1, i);	//³â, ¿ù, ÀÏ		
+			cal.set(y, m-1, i);	//ë…„, ì›”, ì¼		
 			int outWeek = cal.get(Calendar.DAY_OF_WEEK);			
 			if(outWeek == 1){				
 				lbl.setForeground(Color.red);							

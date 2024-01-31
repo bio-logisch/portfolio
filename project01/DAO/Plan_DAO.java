@@ -7,28 +7,28 @@ import java.util.ArrayList;
 import DTO.Member_DTO;
 import DTO.Plan_DTO;
 
-//Å¬·¡½º Á¤ÀÇ : ÀÏÁ¤ µî·Ï, ¼öÁ¤, »èÁ¦, °Ë»ö±â´É ±¸Çö
+//í´ë˜ìŠ¤ ì •ì˜ : ì¼ì • ë“±ë¡, ìˆ˜ì •, ì‚­ì œ, ê²€ìƒ‰ê¸°ëŠ¥ êµ¬í˜„
 public class Plan_DAO extends FNC_DAO{
-	int resultCnt=0; //µî·ÏµÈ Â÷·®¼ö Ä«¿îÆÃ
-	int NumMax = 0; //Â÷·®¹øÈ£ ÃÖ´ë°ª
+	int resultCnt=0; //ë“±ë¡ëœ ì°¨ëŸ‰ìˆ˜ ì¹´ìš´íŒ…
+	int NumMax = 0; //ì°¨ëŸ‰ë²ˆí˜¸ ìµœëŒ€ê°’
 
-	// ÀÏÁ¤µî·Ï ¸Ş¼­µå
+	// ì¼ì •ë“±ë¡ ë©”ì„œë“œ
 	public void insert(Plan_DTO p) { 
-		chkCnt();//ÀÏÁ¤µî·Ï°Ç¼ö Ä«¿îÆÃ
-		chkMaxP_num(); //ÀÏÁ¤µî·Ï°ÇÀÇ numÄÃ·³ÀÇ °ª Áß max°ª ¸®ÅÏ
+		chkCnt();//ì¼ì •ë“±ë¡ê±´ìˆ˜ ì¹´ìš´íŒ…
+		chkMaxP_num(); //ì¼ì •ë“±ë¡ê±´ì˜ numì»¬ëŸ¼ì˜ ê°’ ì¤‘ maxê°’ ë¦¬í„´
 		PreparedStatement psmt = null; 
 		if (getConn()) { 
 			try {
 				String sql = "insert into plan values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"; 
 				psmt = conn.prepareStatement(sql);
-				// ¸ÅÇÎÇÏ±â
-				if(resultCnt == 0) psmt.setInt(1, resultCnt+1); //ÀÏÁ¤ÀÌ ÇÏ³ªµµ ¾øÀ¸¸é
-				else psmt.setInt(1, NumMax+1); //ÀÏÁ¤ÀÌ 1°³ÀÌ»óÀÌ¸é ÃÖ´ë°ª+1ÀÎ °ªÀ» »ğÀÔ
+				// ë§¤í•‘í•˜ê¸°
+				if(resultCnt == 0) psmt.setInt(1, resultCnt+1); //ì¼ì •ì´ í•˜ë‚˜ë„ ì—†ìœ¼ë©´
+				else psmt.setInt(1, NumMax+1); //ì¼ì •ì´ 1ê°œì´ìƒì´ë©´ ìµœëŒ€ê°’+1ì¸ ê°’ì„ ì‚½ì…
 				psmt.setString(2, p.getTitle());
 				psmt.setString(3, p.getType());
 				psmt.setInt(4, p.getImp());
 				psmt.setInt(5, p.getAllday());
-				//³¯Â¥,½Ã°£°ü·Ã
+				//ë‚ ì§œ,ì‹œê°„ê´€ë ¨
 				psmt.setInt(6, p.getS_year()); 
 				psmt.setInt(7, p.getS_month());
 				psmt.setInt(8, p.getS_day());
@@ -39,21 +39,21 @@ public class Plan_DAO extends FNC_DAO{
 				psmt.setInt(13, p.getS_min());
 				psmt.setInt(14, p.getE_hour());
 				psmt.setInt(15, p.getE_min());
-				//ÀÏÁ¤ ÀÛ¼ºÀÚ ¾ÆÀÌµğ
+				//ì¼ì • ì‘ì„±ì ì•„ì´ë””
 				psmt.setString(16, p.getW_id());
 				int resultInt = psmt.executeUpdate();
-				System.out.println(resultInt + "°Ç »ğÀÔ ¼º°ø");
+				System.out.println(resultInt + "ê±´ ì‚½ì… ì„±ê³µ");
 			} catch (Exception e) {
-				System.out.println("insert ¿À·ù");
+				System.out.println("insert ì˜¤ë¥˜");
 				e.printStackTrace();
 			} finally {
 				returnResources2(psmt);
 			}
 		} else {
-			System.out.println("Ä¿³Ø¼Ç Á¤º¸ ¾øÀ½");
+			System.out.println("ì»¤ë„¥ì…˜ ì •ë³´ ì—†ìŒ");
 		}
 	}
-	//ÀÏÁ¤µî·Ï ½Ã »ğÀÔµÈ numÄÃ·³ÀÇ °ª Áß max°ª »êÃâ
+	//ì¼ì •ë“±ë¡ ì‹œ ì‚½ì…ëœ numì»¬ëŸ¼ì˜ ê°’ ì¤‘ maxê°’ ì‚°ì¶œ
 	public int chkMaxP_num(){
 		PreparedStatement psmt = null; 
 		ResultSet rs = null;
@@ -73,7 +73,7 @@ public class Plan_DAO extends FNC_DAO{
 		}
 		return NumMax;
 	}
-	//ÇöÀç ±âÁØ ÀÏÁ¤µî·Ï°Ç¼ö È®ÀÎÇÏ´Â ¸Ş¼­µå
+	//í˜„ì¬ ê¸°ì¤€ ì¼ì •ë“±ë¡ê±´ìˆ˜ í™•ì¸í•˜ëŠ” ë©”ì„œë“œ
 	public int chkCnt(){
 		ResultSet rs =null;
 		if(getConn()) {
@@ -93,7 +93,7 @@ public class Plan_DAO extends FNC_DAO{
 		return resultCnt;
 	}
 
-	//½ÃÀÛÀÏ ±âÁØ ³¯Â¥ È°¿ë ¸ÅÄªµÇ´Â Æ©ÇÃÀÇ °³¼ö °Ë»ö ¸Ş¼­µå
+	//ì‹œì‘ì¼ ê¸°ì¤€ ë‚ ì§œ í™œìš© ë§¤ì¹­ë˜ëŠ” íŠœí”Œì˜ ê°œìˆ˜ ê²€ìƒ‰ ë©”ì„œë“œ
 	public int chkDate(int year, int month, int day) { 
 		ResultSet rs = null;
 		int resultCnt = 0;
@@ -142,7 +142,7 @@ public class Plan_DAO extends FNC_DAO{
 		return resultCnt;
 	}
 
-	//ÀÏÁ¤ ÀüÃ¼º¸±â ¸Ş¼­µå //ÀÔ·Â ¾È¹ŞÀº °Ç 77ÀÌ¶ó ºÒ·¯¿Ã ¶§ 77ÀÎ °ªÀº º¸ÀÌÁö ¾Êµµ·Ï Á¶°Ç °É¾î¾ßÇÔ
+	//ì¼ì • ì „ì²´ë³´ê¸° ë©”ì„œë“œ //ì…ë ¥ ì•ˆë°›ì€ ê±´ 77ì´ë¼ ë¶ˆëŸ¬ì˜¬ ë•Œ 77ì¸ ê°’ì€ ë³´ì´ì§€ ì•Šë„ë¡ ì¡°ê±´ ê±¸ì–´ì•¼í•¨
 	public ArrayList<Plan_DTO> selectAll(){
 		PreparedStatement psmt = null; 
 		ArrayList<Plan_DTO> list = new ArrayList<>();
@@ -301,7 +301,7 @@ public class Plan_DAO extends FNC_DAO{
 		return list;
 	}
 
-	//ÇØ´ç ÀÏÁ¤¹øÈ£¿¡ ¸Â´Â ÀÏÁ¤Ã£±â - ÀÏÁ¤ »èÁ¦, ¼öÁ¤ ½Ã È°¿ë
+	//í•´ë‹¹ ì¼ì •ë²ˆí˜¸ì— ë§ëŠ” ì¼ì •ì°¾ê¸° - ì¼ì • ì‚­ì œ, ìˆ˜ì • ì‹œ í™œìš©
 	public Plan_DTO selectOne1(int num) { 
 		Plan_DTO temp = null;
 		ResultSet rs = null;  
@@ -339,52 +339,52 @@ public class Plan_DAO extends FNC_DAO{
 		}
 		return temp;
 	}
-	//Âü°í¿ë ÀÏÁ¤ °ü·Ã ³»¿ëÀ¸·Î ¹Ù²ã¾ßÇÔ
-	//ºñ¹Ğ¹øÈ£ ¼öÁ¤ ¸Ş¼­µå - ¾ÆÀÌµğ·Î °Ë»ö ÈÄ ¼öÁ¤Àº ºñ¹Ğ¹øÈ£¸¸ °¡´É
+	//ì°¸ê³ ìš© ì¼ì • ê´€ë ¨ ë‚´ìš©ìœ¼ë¡œ ë°”ê¿”ì•¼í•¨
+	//ë¹„ë°€ë²ˆí˜¸ ìˆ˜ì • ë©”ì„œë“œ - ì•„ì´ë””ë¡œ ê²€ìƒ‰ í›„ ìˆ˜ì •ì€ ë¹„ë°€ë²ˆí˜¸ë§Œ ê°€ëŠ¥
 	public void update(Member_DTO m) {
 		PreparedStatement psmt = null; 
 		if (getConn()) {  
 			try {
 				String sql = "update plan set pass=? where id=?"; 
 				psmt = conn.prepareStatement(sql);
-				// ¸ÅÇÎÇÏ±â
+				// ë§¤í•‘í•˜ê¸°
 				psmt.setString(1, m.getPass());
 				psmt.setString(2, m.getId());
-				// Äõ¸® Àü¼ÛÇÏ°í ¸®ÅÏ°ª ¹Ş±â
+				// ì¿¼ë¦¬ ì „ì†¡í•˜ê³  ë¦¬í„´ê°’ ë°›ê¸°
 				int resultInt = psmt.executeUpdate();
-				// ¸®ÅÏ°ªÃ³¸®ÇÏ±â
-				System.out.println(resultInt + "°Ç ¼öÁ¤ ¼º°ø");
+				// ë¦¬í„´ê°’ì²˜ë¦¬í•˜ê¸°
+				System.out.println(resultInt + "ê±´ ìˆ˜ì • ì„±ê³µ");
 			} catch (Exception e) {
-				System.out.println("update ¿À·ù");
+				System.out.println("update ì˜¤ë¥˜");
 				e.printStackTrace();
 			} finally {
 				returnResources2(psmt);
 			}
 		} else {
-			System.out.println("Ä¿³Ø¼Ç Á¤º¸ ¾øÀ½");
+			System.out.println("ì»¤ë„¥ì…˜ ì •ë³´ ì—†ìŒ");
 		}
 	}
-	//È¸¿ø Å»Åğ ¸Ş¼­µå - ¾ÆÀÌµğ·Î °Ë»ö ÈÄ Å»Åğ
+	//íšŒì› íƒˆí‡´ ë©”ì„œë“œ - ì•„ì´ë””ë¡œ ê²€ìƒ‰ í›„ íƒˆí‡´
 	public void delete(String id) {
 		PreparedStatement psmt = null; 
 		if (getConn()) {  
 			try {
 				String sql = "delete from plan where id=?"; 
 				psmt = conn.prepareStatement(sql);
-				// ¸ÅÇÎÇÏ±â
+				// ë§¤í•‘í•˜ê¸°
 				psmt.setString(1, id);
-				// Äõ¸® Àü¼ÛÇÏ°í ¸®ÅÏ°ª ¹Ş±â
+				// ì¿¼ë¦¬ ì „ì†¡í•˜ê³  ë¦¬í„´ê°’ ë°›ê¸°
 				int resultInt = psmt.executeUpdate();
-				// ¸®ÅÏ°ªÃ³¸®ÇÏ±â
-				System.out.println(resultInt + "°Ç »èÁ¦  ¼º°ø");
+				// ë¦¬í„´ê°’ì²˜ë¦¬í•˜ê¸°
+				System.out.println(resultInt + "ê±´ ì‚­ì œ  ì„±ê³µ");
 			} catch (Exception e) {
-				System.out.println("delete ¿À·ù");
+				System.out.println("delete ì˜¤ë¥˜");
 				e.printStackTrace();
 			} finally {
 				returnResources2(psmt);
 			}
 		} else {
-			System.out.println("Ä¿³Ø¼Ç Á¤º¸ ¾øÀ½");
+			System.out.println("ì»¤ë„¥ì…˜ ì •ë³´ ì—†ìŒ");
 		}
 	}
 }

@@ -28,16 +28,16 @@ public class Intro_Frame extends JFrame implements ActionListener {
 		});
 	}
 	public Intro_Frame () {
-		//¸ŞÀÎÃ¢ÀÌ¸§ ¼³Á¤
+		//ë©”ì¸ì°½ì´ë¦„ ì„¤ì •
 		this.setTitle(title);
-		//¸ŞÀÎÃ¢ »çÀÌÁî, ·¹ÀÌ¾Æ¿ô ¼³Á¤
-		this.setSize(1000,800); //°¡·Î,¼¼·Î
+		//ë©”ì¸ì°½ ì‚¬ì´ì¦ˆ, ë ˆì´ì•„ì›ƒ ì„¤ì •
+		this.setSize(1000,800); //ê°€ë¡œ,ì„¸ë¡œ
 		this.setLayout(null);
 		this.setBackground(Color.white);
 		this.setVisible(true);
 		setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		//Å¸ÀÌÆ² ¼¼ÆÃ	
+		//íƒ€ì´í‹€ ì„¸íŒ…	
 		jp1 = new JPanel();
 		jp1.setLayout(new GridLayout(2,1));	
 		jp1.setSize(900, 200);
@@ -82,7 +82,7 @@ public class Intro_Frame extends JFrame implements ActionListener {
 		jp4.setLocation(0,0);
 		jp4.setBackground(new Color(189, 245, 214));
 		
-		//µÚ·Î°¡±â ¹öÆ° Ãß°¡
+		//ë’¤ë¡œê°€ê¸° ë²„íŠ¼ ì¶”ê°€
 		backBtn = new JButton();
 		backBtn.setText("back");
 		backBtn.setBounds(870, 710, 100, 30);
@@ -93,16 +93,16 @@ public class Intro_Frame extends JFrame implements ActionListener {
 		this.add(jp1);
 		this.add(jp2);
 		this.add(jp3);
-		this.add(jp4);//ÁÂÃø ÀÏ·Ä ¹ÙÀÌ¹ÌÁö
+		this.add(jp4);//ì¢Œì¸¡ ì¼ë ¬ ë°”ì´ë¯¸ì§€
 		
-		//ÀÌº¥Æ® Ã³¸®
+		//ì´ë²¤íŠ¸ ì²˜ë¦¬
 		backBtn.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == backBtn) {
-			System.out.println("[ÀÌº¥Æ® ¹ß»ı] - µÚ·Î°¡±â ¹öÆ°");
+			System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - ë’¤ë¡œê°€ê¸° ë²„íŠ¼");
 			this.setVisible(false);
 		}
 		

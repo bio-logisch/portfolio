@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 
 public class  FNC_DAO {
 
-	//µå¶óÀÌ¹ö ·Îµå ¼¼ÆÃ 
+	//ë“œë¼ì´ë²„ ë¡œë“œ ì„¸íŒ… 
 	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 	String username = "system";
 	String pass = "1111";
@@ -14,28 +14,28 @@ public class  FNC_DAO {
 	PreparedStatement psmt = null; 
 
 	public FNC_DAO() {
-		//µå¶óÀÌ¹ö ·Îµå ¹× Ä¿³Ø¼Ç ÀÚ¿ø ¹Ş¾Æ¿À±â ¸Ş¼­µå
+		//ë“œë¼ì´ë²„ ë¡œë“œ ë° ì»¤ë„¥ì…˜ ìì› ë°›ì•„ì˜¤ê¸° ë©”ì„œë“œ
 		try { 
 			Class.forName("oracle.jdbc.driver.OracleDriver"); 
-			System.out.println("µå¶óÀÌ¹ö ·Îµå ¼º°ø"); 
+			System.out.println("ë“œë¼ì´ë²„ ë¡œë“œ ì„±ê³µ"); 
 		} catch (Exception e1) {
-			System.out.println("µå¶óÀÌ¹ö ·Îµå ½ÇÆĞ");
+			System.out.println("ë“œë¼ì´ë²„ ë¡œë“œ ì‹¤íŒ¨");
 		}
 	}
 
-	//Ä¿³Ø¼Ç ÀÚ¿ø ¹Ş¾Æ¿À±â ¸Ş¼­µå
+	//ì»¤ë„¥ì…˜ ìì› ë°›ì•„ì˜¤ê¸° ë©”ì„œë“œ
 	public boolean getConn() {
 		try {
 			conn = DriverManager.getConnection(url, username, pass);
-			System.out.println("Ä¿³Ø¼Ç ¼º°ø");
+			System.out.println("ì»¤ë„¥ì…˜ ì„±ê³µ");
 			return true;
 		} catch (Exception e) {
-			System.out.println("Ä¿³Ø¼Ç ½ÇÆĞ");
+			System.out.println("ì»¤ë„¥ì…˜ ì‹¤íŒ¨");
 		}
 		return false;
 	}	
 
-	//ÀÚ¿ø¹İ³³ ¸Ş¼­µå - Connection(conn) ¹İ³³
+	//ìì›ë°˜ë‚© ë©”ì„œë“œ - Connection(conn) ë°˜ë‚©
 	public void returnResources1() {
 		try {
 			if (conn != null) {
@@ -45,7 +45,7 @@ public class  FNC_DAO {
 		}
 	}
 
-	//ÀÚ¿ø¹İ³³ ¸Ş¼­µå - PreparedStatement(psmt), Connection(conn) ¹İ³³
+	//ìì›ë°˜ë‚© ë©”ì„œë“œ - PreparedStatement(psmt), Connection(conn) ë°˜ë‚©
 	public void returnResources2(PreparedStatement psmt) {
 		try {
 			if (psmt != null) {

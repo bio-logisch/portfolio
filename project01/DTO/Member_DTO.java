@@ -1,6 +1,6 @@
 package DTO;
 
-//Ε¬·΅½Ί Α¤ΐΗ : ΘΈΏψ ΗΡ Έν Α¤ΐΗ
+//ν΄λμ¤ μ •μ : νμ› ν• λª… μ •μ
 public class Member_DTO {
 	
 	String id = null;

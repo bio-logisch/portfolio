@@ -37,8 +37,8 @@ public class RoundedButton_RC extends JButton {
 
 	@Override 
 	protected void paintComponent(Graphics g) {
-		Color o = new Color(46, 188, 108); //±ÛÀÚ»ö
-		Color c = randomColor(); //¹è°æ»ö °áÁ¤
+		Color o = new Color(46, 188, 108); //Â±Ã›Ã€ÃšÂ»Ã¶
+		Color c = randomColor(); //Â¹Ã¨Â°Ã¦Â»Ã¶ Â°Ã¡ÃÂ¤
 		int width = getWidth(); 
 		int height = getHeight(); 
 		Graphics2D graphics = (Graphics2D) g; 

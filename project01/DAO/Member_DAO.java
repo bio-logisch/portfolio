@@ -6,33 +6,33 @@ import java.util.ArrayList;
 import DTO.Member_DTO;
 
 public class Member_DAO extends FNC_DAO{
-	// È¸¿ø °¡ÀÔ ¸Ş¼­µå
+	// íšŒì› ê°€ì… ë©”ì„œë“œ
 	public void insert(Member_DTO m) { 
 		PreparedStatement psmt = null; 
 		if (getConn()) { 
 			try {
 				String sql = "insert into member2 values (?,?,?,?)"; 
 				psmt = conn.prepareStatement(sql);
-				// ¸ÅÇÎÇÏ±â
+				// ë§¤í•‘í•˜ê¸°
 				psmt.setString(1, m.getId());
 				psmt.setString(2, m.getPass());
 				psmt.setString(3, m.getName());
 				psmt.setString(4, m.getbDate());
 
 				int resultInt = psmt.executeUpdate();
-				System.out.println(resultInt + "°Ç »ğÀÔ ¼º°ø");
+				System.out.println(resultInt + "ê±´ ì‚½ì… ì„±ê³µ");
 			} catch (Exception e) {
-				System.out.println("insert ¿À·ù");
+				System.out.println("insert ì˜¤ë¥˜");
 				e.printStackTrace();
 			} finally {
 				returnResources2(psmt);
 			}
 		} else {
-			System.out.println("Ä¿³Ø¼Ç Á¤º¸ ¾øÀ½");
+			System.out.println("ì»¤ë„¥ì…˜ ì •ë³´ ì—†ìŒ");
 		}
 	}
 
-	//¾ÆÀÌµğ È°¿ë ¸ÅÄªµÇ´Â È¸¿ø Æ©ÇÃÀÇ °³¼ö °Ë»ö ¸Ş¼­µå
+	//ì•„ì´ë”” í™œìš© ë§¤ì¹­ë˜ëŠ” íšŒì› íŠœí”Œì˜ ê°œìˆ˜ ê²€ìƒ‰ ë©”ì„œë“œ
 	public int chkId(String id) { 
 		ResultSet rs = null;
 		int resultCnt = 0;
@@ -56,7 +56,7 @@ public class Member_DAO extends FNC_DAO{
 		return resultCnt;
 	}
 
-	//È¸¿ø ÀüÃ¼º¸±â ¸Ş¼­µå 
+	//íšŒì› ì „ì²´ë³´ê¸° ë©”ì„œë“œ 
 	public ArrayList<Member_DTO> selectAll(){
 		PreparedStatement psmt = null; 
 		ArrayList<Member_DTO> list = new ArrayList<>();
@@ -83,7 +83,7 @@ public class Member_DAO extends FNC_DAO{
 		return list;
 	}
 
-	//¾ÆÀÌµğ Áßº¹È®ÀÎ ¸Ş¼­µå - Á¶°Ç¿¡ ÇØ´çÇÏ´Â Æ©ÇÃ ÇÏ³ª¸¸ °Ë»öÇÏ´Â ¸Ş¼­µå
+	//ì•„ì´ë”” ì¤‘ë³µí™•ì¸ ë©”ì„œë“œ - ì¡°ê±´ì— í•´ë‹¹í•˜ëŠ” íŠœí”Œ í•˜ë‚˜ë§Œ ê²€ìƒ‰í•˜ëŠ” ë©”ì„œë“œ
 	public Member_DTO selectOne1(String id) { 
 		Member_DTO temp = null;
 		ResultSet rs = null;  
@@ -109,7 +109,7 @@ public class Member_DAO extends FNC_DAO{
 		}
 		return temp;
 	}
-	//ºñ¹Ğ¹øÈ£ Áßº¹È®ÀÎ ¸Ş¼­µå - Á¶°Ç¿¡ ÇØ´çÇÏ´Â Æ©ÇÃ ÇÏ³ª¸¸ °Ë»öÇÏ´Â ¸Ş¼­µå
+	//ë¹„ë°€ë²ˆí˜¸ ì¤‘ë³µí™•ì¸ ë©”ì„œë“œ - ì¡°ê±´ì— í•´ë‹¹í•˜ëŠ” íŠœí”Œ í•˜ë‚˜ë§Œ ê²€ìƒ‰í•˜ëŠ” ë©”ì„œë“œ
 	public Member_DTO selectOne2(String pass) {  
 		Member_DTO temp = null;
 		ResultSet rs = null;  
@@ -136,52 +136,52 @@ public class Member_DAO extends FNC_DAO{
 		return temp;
 	}
 
-	//ºñ¹Ğ¹øÈ£ ¼öÁ¤ ¸Ş¼­µå - ¾ÆÀÌµğ·Î °Ë»ö ÈÄ ¼öÁ¤Àº ºñ¹Ğ¹øÈ£¸¸ °¡´É
+	//ë¹„ë°€ë²ˆí˜¸ ìˆ˜ì • ë©”ì„œë“œ - ì•„ì´ë””ë¡œ ê²€ìƒ‰ í›„ ìˆ˜ì •ì€ ë¹„ë°€ë²ˆí˜¸ë§Œ ê°€ëŠ¥
 	public void update(Member_DTO m) {
 		PreparedStatement psmt = null; 
 		if (getConn()) {  
 			try {
 				String sql = "update member2 set pass=? where id=?"; 
 				psmt = conn.prepareStatement(sql);
-				// ¸ÅÇÎÇÏ±â
+				// ë§¤í•‘í•˜ê¸°
 				psmt.setString(1, m.getPass());
 				System.out.println(m.getPass());
 				psmt.setString(2, m.getId());
-				// Äõ¸® Àü¼ÛÇÏ°í ¸®ÅÏ°ª ¹Ş±â
+				// ì¿¼ë¦¬ ì „ì†¡í•˜ê³  ë¦¬í„´ê°’ ë°›ê¸°
 				int resultInt = psmt.executeUpdate();
-				// ¸®ÅÏ°ªÃ³¸®ÇÏ±â
-				System.out.println(resultInt + "°Ç ¼öÁ¤ ¼º°ø");
+				// ë¦¬í„´ê°’ì²˜ë¦¬í•˜ê¸°
+				System.out.println(resultInt + "ê±´ ìˆ˜ì • ì„±ê³µ");
 			} catch (Exception e) {
-				System.out.println("update ¿À·ù");
+				System.out.println("update ì˜¤ë¥˜");
 				e.printStackTrace();
 			} finally {
 				returnResources2(psmt);
 			}
 		} else {
-			System.out.println("Ä¿³Ø¼Ç Á¤º¸ ¾øÀ½");
+			System.out.println("ì»¤ë„¥ì…˜ ì •ë³´ ì—†ìŒ");
 		}
 	}
-	//È¸¿ø Å»Åğ ¸Ş¼­µå - ¾ÆÀÌµğ·Î °Ë»ö ÈÄ Å»Åğ
+	//íšŒì› íƒˆí‡´ ë©”ì„œë“œ - ì•„ì´ë””ë¡œ ê²€ìƒ‰ í›„ íƒˆí‡´
 	public void delete(String id) {
 		PreparedStatement psmt = null; 
 		if (getConn()) {  
 			try {
 				String sql = "delete from member2 where id=?"; 
 				psmt = conn.prepareStatement(sql);
-				// ¸ÅÇÎÇÏ±â
+				// ë§¤í•‘í•˜ê¸°
 				psmt.setString(1, id);
-				// Äõ¸® Àü¼ÛÇÏ°í ¸®ÅÏ°ª ¹Ş±â
+				// ì¿¼ë¦¬ ì „ì†¡í•˜ê³  ë¦¬í„´ê°’ ë°›ê¸°
 				int resultInt = psmt.executeUpdate();
-				// ¸®ÅÏ°ªÃ³¸®ÇÏ±â
-				System.out.println(resultInt + "°Ç »èÁ¦  ¼º°ø");
+				// ë¦¬í„´ê°’ì²˜ë¦¬í•˜ê¸°
+				System.out.println(resultInt + "ê±´ ì‚­ì œ  ì„±ê³µ");
 			} catch (Exception e) {
-				System.out.println("delete ¿À·ù");
+				System.out.println("delete ì˜¤ë¥˜");
 				e.printStackTrace();
 			} finally {
 				returnResources2(psmt);
 			}
 		} else {
-			System.out.println("Ä¿³Ø¼Ç Á¤º¸ ¾øÀ½");
+			System.out.println("ì»¤ë„¥ì…˜ ì •ë³´ ì—†ìŒ");
 		}
 	}
 }

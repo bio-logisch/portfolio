@@ -21,16 +21,16 @@ import DAO.Member_DAO;
 import DTO.Member_DTO;
 
 public class Login_Frame extends JFrame implements ActionListener{
-	//·Î±×ÀÎÃ¢
+	//ë¡œê·¸ì¸ì°½
 	private JPanel contentPane, contentPane2;
 	private JTextField tfUsername;
 	private JPasswordField tfPassword;
 	private JButton loginBtn, joinBtn;
 	Member_DAO mdao = new Member_DAO();
 	final String title = "Dear My Diary ver 1.0 ... Login";
-	public static boolean chkLog = false; //·Î±×ÀÎ ¿©ºÎ Ã¼Å© 
-	private static String logID = null; //·Î±×ÀÎ ¿Ï·á ½Ã ¾ÆÀÌµğ ÀúÀå
-	private static String logPass = null; //·Î±×ÀÎ ¿Ï·á ½Ã ºñ¹Ğ¹øÈ£ ÀúÀå
+	public static boolean chkLog = false; //ë¡œê·¸ì¸ ì—¬ë¶€ ì²´í¬ 
+	private static String logID = null; //ë¡œê·¸ì¸ ì™„ë£Œ ì‹œ ì•„ì´ë”” ì €ì¥
+	private static String logPass = null; //ë¡œê·¸ì¸ ì™„ë£Œ ì‹œ ë¹„ë°€ë²ˆí˜¸ ì €ì¥
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable(){
 			public void run() {
@@ -43,42 +43,42 @@ public class Login_Frame extends JFrame implements ActionListener{
 		});
 	}
 	public Login_Frame () {		
-		//Ã¢ÀÌ¸§ ¼³Á¤
+		//ì°½ì´ë¦„ ì„¤ì •
 		this.setTitle(title);
-		//¸ŞÀÎ Ã¢, Layout ¼³Á¤
-		this.setSize(1000,800); //°¡·Î,¼¼·Î
+		//ë©”ì¸ ì°½, Layout ì„¤ì •
+		this.setSize(1000,800); //ê°€ë¡œ,ì„¸ë¡œ
 		this.setBackground(Color.white);
 		this.setLayout(new GridLayout(1,2));
 		setLocationRelativeTo(null);
 		
-		//¿ø·¡ÄÚµå±â¹İ ·Î±×ÀÎÃ¢
+		//ì›ë˜ì½”ë“œê¸°ë°˜ ë¡œê·¸ì¸ì°½
 		contentPane = new JPanel();
 		contentPane.setSize(500,800);
 		contentPane.setBorder(new EmptyBorder(5,5,5,5));
 		contentPane.setLayout(null);
 
-		//ÀÓ½ÃÃß°¡
+		//ì„ì‹œì¶”ê°€
 		contentPane2 = new JPanel();
 		contentPane2.setSize(500, 800);
 		contentPane2.setLayout(null);
 		this.add(contentPane);
 		this.add(contentPane2);
 		
-		//·Î±×ÀÎ »ó´Ü Å¸ÀÌÆ² - neu
+		//ë¡œê·¸ì¸ ìƒë‹¨ íƒ€ì´í‹€ - neu
 		ImagePanel mainTitle = new ImagePanel(new ImageIcon(
 				               "C:\\SRC\\JAVA\\Test1127\\Image\\LoginTitle.png").getImage());
 		mainTitle.setBounds(50, 70, 400, 140);
 		contentPane.add(mainTitle);	
 		
-		//·Î±×ÀÎÃ¢ ¿ìÃøÇÏ´Ü ·Î°í
+		//ë¡œê·¸ì¸ì°½ ìš°ì¸¡í•˜ë‹¨ ë¡œê³ 
 		ImagePanel LoginLogo = new ImagePanel(new ImageIcon(
 								"C:\\SRC\\JAVA\\Test1127\\Image\\LoginLogo.png").getImage());
 		LoginLogo.setBounds(50, 600, 400, 135);
 		contentPane2.add(LoginLogo);		
 		
-		//¼¼ºÎ ¶óº§
+		//ì„¸ë¶€ ë¼ë²¨
 		JLabel lblLogin = new JLabel("ID");
-		Font f1 = new Font("µ¸¿ò", Font.BOLD, 15); //±Ã¼­ ¹ÙÅÁ µ¸¿ò
+		Font f1 = new Font("ë‹ì›€", Font.BOLD, 15); //ê¶ì„œ ë°”íƒ• ë‹ì›€
 		lblLogin.setFont(f1); 
 		lblLogin.setBounds(138, 270, 100, 40);
 		contentPane.add(lblLogin);
@@ -119,27 +119,27 @@ public class Login_Frame extends JFrame implements ActionListener{
 		loginBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				logID = null; //¾ÆÀÌµğ ÃÊ±âÈ­
-				logPass = null; //ºñ¹Ğ¹øÈ£ ÃÊ±âÈ­
+				logID = null; //ì•„ì´ë”” ì´ˆê¸°í™”
+				logPass = null; //ë¹„ë°€ë²ˆí˜¸ ì´ˆê¸°í™”
 				String newId = tfUsername.getText();
 				char[] pwChar = tfPassword.getPassword();
 				String newPass = new String(pwChar);
-				//String newPass = new String(tfPassword.getPassword()); //À§ µÎÁÙ °£´ÜÈ÷ ÇÏ¸é ÀÌ·¸°Ô µÊ
-				//JPasswordField´Â ´Ù¸¥ ÅØ½ºÆ®¹Ú½º¿Í ´Ş¸® getText()·Î ¹®ÀÚ¿­À» °¡Á®¿Ã ¼ö ¾øÀ½
-				//JPasswordFieldÀÇ  getPassword()¸Ş¼­µå´Â char[]°ªÀ» ¹İÈ¯ÇÔ(ÀÌ¸¦ StringÅ¸ÀÔÀ¸·Î º¯È¯ÇØÁÖ¾î¾ß ÇÔ 
+				//String newPass = new String(tfPassword.getPassword()); //ìœ„ ë‘ì¤„ ê°„ë‹¨íˆ í•˜ë©´ ì´ë ‡ê²Œ ë¨
+				//JPasswordFieldëŠ” ë‹¤ë¥¸ í…ìŠ¤íŠ¸ë°•ìŠ¤ì™€ ë‹¬ë¦¬ getText()ë¡œ ë¬¸ìì—´ì„ ê°€ì ¸ì˜¬ ìˆ˜ ì—†ìŒ
+				//JPasswordFieldì˜  getPassword()ë©”ì„œë“œëŠ” char[]ê°’ì„ ë°˜í™˜í•¨(ì´ë¥¼ Stringíƒ€ì…ìœ¼ë¡œ ë³€í™˜í•´ì£¼ì–´ì•¼ í•¨ 
 				int cnt = mdao.chkId(newId);
-				if(cnt == 0) { //°¡ÀÔÇÑ ¾ÆÀÌµğ°¡ ¾Æ´Ï¸é
+				if(cnt == 0) { //ê°€ì…í•œ ì•„ì´ë””ê°€ ì•„ë‹ˆë©´
 					JOptionPane.showMessageDialog(null, "Login failed [ID Error]");
-				} else if(cnt == 1) { //°¡ÀÔÇÑ ¾ÆÀÌµğ¸é
+				} else if(cnt == 1) { //ê°€ì…í•œ ì•„ì´ë””ë©´
 					Member_DTO mdto = mdao.selectOne1(newId);
-					if(newPass.equals(mdto.getPass())) {  //ÇØ´ç ¾ÆÀÌµğÀÇ ºñ¹Ğ¹øÈ£°¡ ¸ÂÀ¸¸é
+					if(newPass.equals(mdto.getPass())) {  //í•´ë‹¹ ì•„ì´ë””ì˜ ë¹„ë°€ë²ˆí˜¸ê°€ ë§ìœ¼ë©´
 						JOptionPane.showMessageDialog(null, "Login succeed");
 						chkLog = true;
-						logID = newId; //·Î±×ÀÎÇÑ ¾ÆÀÌµğ Á¤º¸ ÀúÀå
+						logID = newId; //ë¡œê·¸ì¸í•œ ì•„ì´ë”” ì •ë³´ ì €ì¥
 						logPass = newPass;
 						new Calendar_GUI();
 						dispose();
-					} else {  //ÇØ´ç ¾ÆÀÌµğÀÇ ºñ¹Ğ¹øÈ£°¡ ¾Æ´Ï¸é
+					} else {  //í•´ë‹¹ ì•„ì´ë””ì˜ ë¹„ë°€ë²ˆí˜¸ê°€ ì•„ë‹ˆë©´
 						JOptionPane.showMessageDialog(null, "Login failed [Password Error]");
 						dispose();
 					}
@@ -150,10 +150,10 @@ public class Login_Frame extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == joinBtn) {
-			System.out.println("[ÀÌº¥Æ® ¹ß»ı] - È¸¿ø°¡ÀÔ ¹öÆ° ¼±ÅÃ");
+			System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - íšŒì›ê°€ì… ë²„íŠ¼ ì„ íƒ");
 			System.out.println(e.getSource());
-			this.setVisible(false); //·Î±×ÀÎÃ¢ Á¾·á
-			new Join_Frame(); //È¸¿ø°¡ÀÔ ¸Ş¼­µå È£Ãâ
+			this.setVisible(false); //ë¡œê·¸ì¸ì°½ ì¢…ë£Œ
+			new Join_Frame(); //íšŒì›ê°€ì… ë©”ì„œë“œ í˜¸ì¶œ
 		} 
 	}
 	public static String getLogID() {

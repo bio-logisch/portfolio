@@ -8,7 +8,7 @@ import DAO.Member_DAO;
 import DTO.Member_DTO;
 
 public class Join_Frame extends JFrame implements ActionListener{
-	//È¸¿ø°¡ÀÔÃ¢
+	//íšŒì›ê°€ì…ì°½
 	private JPanel contentPane, contentPane2;
 	private JButton idchkBtn, passchkBtn, joinCompleteBtn, backBtn;
 	private JTextField tfUsername, tfPassword, tfName, tfBdate;
@@ -29,10 +29,10 @@ public class Join_Frame extends JFrame implements ActionListener{
 		});
 	}
 	public Join_Frame() {	
-		//Ã¢ÀÌ¸§ ¼³Á¤
+		//ì°½ì´ë¦„ ì„¤ì •
 		this.setTitle(title);
-		//Ã¢ ·¹ÀÌ¾Æ¿ô, Å©±â ¼³Á¤
-		this.setSize(1000,800); //°¡·Î,¼¼·Î
+		//ì°½ ë ˆì´ì•„ì›ƒ, í¬ê¸° ì„¤ì •
+		this.setSize(1000,800); //ê°€ë¡œ,ì„¸ë¡œ
 		this.setBackground(Color.white);
 		this.setLayout(new GridLayout(1,2));
 		setLocationRelativeTo(null);
@@ -49,63 +49,63 @@ public class Join_Frame extends JFrame implements ActionListener{
 		this.add(contentPane);
 		this.add(contentPane2);
 		
-		//Á¶ÀÎÃ¢ ÁÂÃøÇÏ´Ü ·Î°í
+		//ì¡°ì¸ì°½ ì¢Œì¸¡í•˜ë‹¨ ë¡œê³ 
 		ImagePanel JoinLogo = new ImagePanel(new ImageIcon(
 								"C:\\SRC\\JAVA\\Test1127\\Image\\JoinLogo.png").getImage());
 		JoinLogo.setBounds(50, 600, 400, 135);
 		contentPane.add(JoinLogo);
 		
-		//Á¶ÀÎ »ó´Ü Å¸ÀÌÆ² - neu
+		//ì¡°ì¸ ìƒë‹¨ íƒ€ì´í‹€ - neu
 		ImagePanel mainTitle = new ImagePanel(new ImageIcon(
 								"C:\\SRC\\JAVA\\Test1127\\Image\\JoinTitle.png").getImage());
 		mainTitle.setBounds(50, 70, 400, 140);
 		contentPane2.add(mainTitle);
 		
-		//¾ÆÀÌµğ ºÎºĞ
+		//ì•„ì´ë”” ë¶€ë¶„
 		JLabel lblUsername = new JLabel("ID");
 		lblUsername.setBounds(70, 300, 50, 15);
-		lblUsername.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
+		lblUsername.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 16));
 		tfUsername = new JTextField();
 		tfUsername.setColumns(10);
 		tfUsername.setBounds(163, 293, 140, 34);
 		JLabel idInfo = new JLabel("  max.10 words");
 		idInfo.setBounds(163, 332, 100, 15);
-		idchkBtn = new JButton("Check"); //¾ÆÀÌµğ Áßº¹¿©ºÎÈ®ÀÎ ¹öÆ°
-		idchkBtn.setBounds(310, 293, 110, 23); //À§Ä¡´Â tf ¹Ù·Î ¿·À¸·Î 
+		idchkBtn = new JButton("Check"); //ì•„ì´ë”” ì¤‘ë³µì—¬ë¶€í™•ì¸ ë²„íŠ¼
+		idchkBtn.setBounds(310, 293, 110, 23); //ìœ„ì¹˜ëŠ” tf ë°”ë¡œ ì˜†ìœ¼ë¡œ 
 		idchkBtn.setBackground(new Color(20, 180, 73));
 		idchkBtn.setForeground(Color.white);
-		idchk = new JLabel("");//¾ÆÀÌµğ »ç¿ë°¡´É¿©ºÎ ¾È³»¹®±¸
-		idchk.setBounds(320, 326, 83, 15); //À§Ä¡´Â tf ¹Ù·Î ¾Æ·¡
+		idchk = new JLabel("");//ì•„ì´ë”” ì‚¬ìš©ê°€ëŠ¥ì—¬ë¶€ ì•ˆë‚´ë¬¸êµ¬
+		idchk.setBounds(320, 326, 83, 15); //ìœ„ì¹˜ëŠ” tf ë°”ë¡œ ì•„ë˜
 		contentPane2.add(lblUsername);
 		contentPane2.add(idInfo);
 		contentPane2.add(tfUsername);
 		contentPane2.add(idchkBtn);
 		contentPane2.add(idchk);
 
-		//ºñ¹Ğ¹øÈ£ ºÎºĞ
+		//ë¹„ë°€ë²ˆí˜¸ ë¶€ë¶„
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setBounds(70, 366, 100, 15);
-		lblPassword.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
+		lblPassword.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 16));
 		tfPassword = new JTextField();
 		tfPassword.setColumns(10);
 		tfPassword.setBounds(163, 359, 140, 34);
 		JLabel passInfo = new JLabel("  max.5 words");
 		passInfo.setBounds(163, 398, 100, 15);
-		passchkBtn = new JButton("check"); //ºñ¹Ğ¹øÈ£ ±ÛÀÚ¼ö È®ÀÎ ¹öÆ°
-		passchkBtn.setBounds(310, 359, 110, 23); //À§Ä¡´Â tf ¹Ù·Î ¿·À¸·Î 
+		passchkBtn = new JButton("check"); //ë¹„ë°€ë²ˆí˜¸ ê¸€ììˆ˜ í™•ì¸ ë²„íŠ¼
+		passchkBtn.setBounds(310, 359, 110, 23); //ìœ„ì¹˜ëŠ” tf ë°”ë¡œ ì˜†ìœ¼ë¡œ 
 		passchkBtn.setBackground(new Color(20, 180, 73));
 		passchkBtn.setForeground(Color.white);
-		passchk = new JLabel("");//ºñ¹Ğ¹øÈ£ °¡´É¿©ºÎ ¾È³»¹®±¸
-		passchk.setBounds(320, 392, 200, 15); //À§Ä¡´Â tf ¹Ù·Î ¾Æ·¡
+		passchk = new JLabel("");//ë¹„ë°€ë²ˆí˜¸ ê°€ëŠ¥ì—¬ë¶€ ì•ˆë‚´ë¬¸êµ¬
+		passchk.setBounds(320, 392, 200, 15); //ìœ„ì¹˜ëŠ” tf ë°”ë¡œ ì•„ë˜
 		contentPane2.add(lblPassword);
 		contentPane2.add(tfPassword);
 		contentPane2.add(passInfo);
 		contentPane2.add(passchkBtn);
 		contentPane2.add(passchk);
 
-		//ÀÌ¸§ ºÎºĞ
+		//ì´ë¦„ ë¶€ë¶„
 		JLabel lblName = new JLabel("Name");
-		lblName.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
+		lblName.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 16));
 		lblName.setBounds(70, 422, 50, 15);
 		tfName = new JTextField();
 		tfName.setColumns(10);
@@ -113,9 +113,9 @@ public class Join_Frame extends JFrame implements ActionListener{
 		contentPane2.add(lblName);
 		contentPane2.add(tfName);
 
-		//»ı³â¿ùÀÏ ºÎºĞ
+		//ìƒë…„ì›”ì¼ ë¶€ë¶„
 		JLabel lblBdate = new JLabel("Birth Date"); //(yy/mm/dd)
-		lblBdate.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
+		lblBdate.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 16));
 		lblBdate.setBounds(70, 490, 90, 15);
 		tfBdate = new JTextField();
 		tfBdate.setColumns(10);
@@ -126,21 +126,21 @@ public class Join_Frame extends JFrame implements ActionListener{
 		contentPane2.add(tfBdate);
 		contentPane2.add(bDateInfo);
 
-		//È¸¿ø°¡ÀÔ ¿Ï·á ¹öÆ°
+		//íšŒì›ê°€ì… ì™„ë£Œ ë²„íŠ¼
 		joinCompleteBtn = new JButton("complete");
 		joinCompleteBtn.setBounds(143, 560, 183, 34);
-		joinCompleteBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
+		joinCompleteBtn.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 15));
 		joinCompleteBtn.setBackground(new Color(56, 162, 114));
 		contentPane2.add(joinCompleteBtn);
 
-		//¿ìÃøÇÏ´Ü µÚ·Î°¡±â ¹öÆ°
+		//ìš°ì¸¡í•˜ë‹¨ ë’¤ë¡œê°€ê¸° ë²„íŠ¼
 		backBtn = new JButton();
 		backBtn.setText("back");
 		backBtn.setBounds(350, 640, 100, 30);
 		backBtn.setBackground(new Color(226, 229, 47));
 		contentPane2.add(backBtn);
 
-		//ÀÌº¥Æ® Ã³¸®
+		//ì´ë²¤íŠ¸ ì²˜ë¦¬
 		backBtn.addActionListener(this);
 		joinCompleteBtn.addActionListener(this); 
 		idchkBtn.addActionListener(this); 
@@ -148,11 +148,11 @@ public class Join_Frame extends JFrame implements ActionListener{
 		this.setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		//È¸¿ø°¡ÀÔ¿Ï·á ¾×¼Ç
+		//íšŒì›ê°€ì…ì™„ë£Œ ì•¡ì…˜
 		joinCompleteBtn.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) { //¿Ï·á ½Ã ¾Ë¸²Ã¢ ¶ç¿ì±â
-				JOptionPane.showMessageDialog(null, "È¸¿ø°¡ÀÔÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+			public void actionPerformed(ActionEvent e) { //ì™„ë£Œ ì‹œ ì•Œë¦¼ì°½ ë„ìš°ê¸°
+				JOptionPane.showMessageDialog(null, "íšŒì›ê°€ì…ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
 				dispose();
 				new Main_Frame();
 			}	
@@ -161,37 +161,37 @@ public class Join_Frame extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == idchkBtn) {
-			System.out.println("[ÀÌº¥Æ® ¹ß»ı] - ¾ÆÀÌµğ Áßº¹È®ÀÎ ¹öÆ°");
-			//¾ÆÀÌµğ Áßº¹È®ÀÎ ÈÄ ÇØ´çµÇ´Â ¸Ş½ÃÁö µî·Ï
+			System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - ì•„ì´ë”” ì¤‘ë³µí™•ì¸ ë²„íŠ¼");
+			//ì•„ì´ë”” ì¤‘ë³µí™•ì¸ í›„ í•´ë‹¹ë˜ëŠ” ë©”ì‹œì§€ ë“±ë¡
 			String newId = tfUsername.getText();
 			Member_DTO dto1 = mdao.selectOne1(newId);
-			if(dto1 ==  null) idchk.setText("available"); //Áßº¹µÇ´Â ¾ÆÀÌµğ°¡ ¾øÀ¸¸é	
+			if(dto1 ==  null) idchk.setText("available"); //ì¤‘ë³µë˜ëŠ” ì•„ì´ë””ê°€ ì—†ìœ¼ë©´	
 			else idchk.setText("[ duplicate ]");
 			if(tfUsername.getText().equals("")) idchk.setText("[ type your ID ]");
 		}else if(e.getSource() == passchkBtn) {
-			//ºñ¹Ğ¹øÈ£ ÀÚ¸®¼ö È®ÀÎ ÈÄ ÇØ´çµÇ´Â ¸Ş½ÃÁö µî·Ï
+			//ë¹„ë°€ë²ˆí˜¸ ìë¦¬ìˆ˜ í™•ì¸ í›„ í•´ë‹¹ë˜ëŠ” ë©”ì‹œì§€ ë“±ë¡
 			String newPass = tfPassword.getText();
 			if(newPass.length() <= 5) passchk.setText("available");
 			else passchk.setText("[ limit error ]");
 			if(tfPassword.getText().equals("")) passchk.setText("[ type your Password ]");
 
 		}else if(e.getSource() == joinCompleteBtn) {
-			System.out.println("[ÀÌº¥Æ® ¹ß»ı] - È¸¿ø°¡ÀÔ ¿Ï·á ¹öÆ°");
-			//ÀÔ·ÂÇÑ ³»¿ë db¿¡ ÀúÀå
+			System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - íšŒì›ê°€ì… ì™„ë£Œ ë²„íŠ¼");
+			//ì…ë ¥í•œ ë‚´ìš© dbì— ì €ì¥
 			String newId = tfUsername.getText();
 			String newPass = tfPassword.getText();
 			String newName = tfName.getText();
 			String newBdate = tfBdate.getText();
 			Member_DTO mdto = new Member_DTO();
-			//¾ÆÀÌµğ Áßº¹ x, ºñ¹Ğ¹øÈ£ 5ÀÚ¸® ÀÌÇÏÀÌ¸é ÀúÀå
+			//ì•„ì´ë”” ì¤‘ë³µ x, ë¹„ë°€ë²ˆí˜¸ 5ìë¦¬ ì´í•˜ì´ë©´ ì €ì¥
 			mdto.setId(newId);
 			mdto.setPass(newPass);
 			mdto.setName(newName);
 			mdto.setbDate(newBdate);
 			mdao.insert(mdto);
-			System.out.println("È¸¿ø°¡ÀÔ Á¤º¸ DB ÀúÀå¿Ï·á");
+			System.out.println("íšŒì›ê°€ì… ì •ë³´ DB ì €ì¥ì™„ë£Œ");
 		}else if(e.getSource() == backBtn) {
-			System.out.println("[ÀÌº¥Æ® ¹ß»ı] - µÚ·Î°¡±â ¹öÆ°");
+			System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - ë’¤ë¡œê°€ê¸° ë²„íŠ¼");
 			this.setVisible(false);
 			new Main_Frame();
 		}

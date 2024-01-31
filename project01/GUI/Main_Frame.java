@@ -10,9 +10,9 @@ import javax.swing.*;
 
 import button.RoundedButton_RC;
 
-//Main Å¬·¡½º È­¸é ±¸Çö
+//Main í´ë˜ìŠ¤ í™”ë©´ êµ¬í˜„
 public class Main_Frame extends JFrame implements ActionListener, MouseListener{
-	//¹öÆ° Ãß°¡
+	//ë²„íŠ¼ ì¶”ê°€
 	RoundedButton_RC joinBtn = new RoundedButton_RC();
 	RoundedButton_RC loginBtn = new RoundedButton_RC();
 	RoundedButton_RC howToBtn = new RoundedButton_RC();
@@ -20,23 +20,23 @@ public class Main_Frame extends JFrame implements ActionListener, MouseListener{
 	//	JLabel title1 = new JLabel("Dear My Diary");
 	JLabel title2 = new JLabel("Dear My Diary");
 
-	//Panel Ãß°¡ 
-	JPanel jp1 = new JPanel(); //»ó´Ü Áß¾Ó(ÇÁ·Î±×·¥ ÀÌ¹ÌÁö)
-	JPanel jp2 = new JPanel(); //Á¤Áß¾Ó(ÇÁ·Î±×·¥ ¼Ò°³ ¹®±¸)
-	//Ã¢ÀÌ¸§ ¼³Á¤
+	//Panel ì¶”ê°€ 
+	JPanel jp1 = new JPanel(); //ìƒë‹¨ ì¤‘ì•™(í”„ë¡œê·¸ë¨ ì´ë¯¸ì§€)
+	JPanel jp2 = new JPanel(); //ì •ì¤‘ì•™(í”„ë¡œê·¸ë¨ ì†Œê°œ ë¬¸êµ¬)
+	//ì°½ì´ë¦„ ì„¤ì •
 	final String title = "Dear My Diary ver 1.0";
 
-	//»ı¼ºÀÚ
+	//ìƒì„±ì
 	public Main_Frame() {
-		//Ã¢ÀÌ¸§ ¼³Á¤
+		//ì°½ì´ë¦„ ì„¤ì •
 		this.setTitle(title);
-		//¸ŞÀÎ Ã¢, Layout ¼³Á¤
-		this.setSize(1000,800); //°¡·Î,¼¼·Î
+		//ë©”ì¸ ì°½, Layout ì„¤ì •
+		this.setSize(1000,800); //ê°€ë¡œ,ì„¸ë¡œ
 		this.setLayout(null);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		//ÄÄÆ÷³ÍÆ® Ãß°¡(¹öÆ°, ÆÇ³Ú)
+		//ì»´í¬ë„ŒíŠ¸ ì¶”ê°€(ë²„íŠ¼, íŒë„¬)
 		setComponents();	
 	}
 	private void colorSetting() {
@@ -51,7 +51,7 @@ public class Main_Frame extends JFrame implements ActionListener, MouseListener{
 	}
 
 	private void setComponents() {	
-		//ÆÇ³Ú Ãß°¡
+		//íŒë„¬ ì¶”ê°€
 		jp1.setLayout(new GridLayout(1,1));
 		jp1.setSize(500, 162);
 		jp1.setLocation(250, 70);
@@ -65,7 +65,7 @@ public class Main_Frame extends JFrame implements ActionListener, MouseListener{
 		//		jp2.add(title2,"Center");
 		this.getContentPane().setBackground(Color.white);
 
-		//ÀÌ¹ÌÁö ÆĞ³Î Ãß°¡
+		//ì´ë¯¸ì§€ íŒ¨ë„ ì¶”ê°€
 		ImagePanel mainPanel = new ImagePanel(new ImageIcon(
 				"C:\\SRC\\JAVA\\Test1127\\Image\\Title.png").getImage());
 		mainPanel.setBounds(0, 0, 500, 162);
@@ -76,7 +76,7 @@ public class Main_Frame extends JFrame implements ActionListener, MouseListener{
 		subPanel.setBounds(230, 0, 500, 86);
 		jp2.add(subPanel);
 
-		//¹öÆ° Ãß°¡
+		//ë²„íŠ¼ ì¶”ê°€
 		joinBtn.setText("JOIN");
 		joinBtn.setBounds(150,520,200,100);
 		joinBtn.setSize(100,100);
@@ -97,9 +97,9 @@ public class Main_Frame extends JFrame implements ActionListener, MouseListener{
 		exitBtn.setBounds(750,520,200,100);
 		exitBtn.setSize(100,100);
 		this.add(exitBtn);
-		//»ö»óÃß°¡
+		//ìƒ‰ìƒì¶”ê°€
 		colorSetting();
-		//ÀÌº¥Æ® Ã³¸®
+		//ì´ë²¤íŠ¸ ì²˜ë¦¬
 		joinBtn.addActionListener(this); 
 		loginBtn.addActionListener(this); 
 		howToBtn.addActionListener(this); 
@@ -113,27 +113,27 @@ public class Main_Frame extends JFrame implements ActionListener, MouseListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == joinBtn) {
-			System.out.println("[ÀÌº¥Æ® ¹ß»ı] - È¸¿ø°¡ÀÔ ¹öÆ° ¼±ÅÃ");
+			System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - íšŒì›ê°€ì… ë²„íŠ¼ ì„ íƒ");
 			System.out.println(e.getSource());
-			this.setVisible(false); //¸ŞÀÎ¸Ş´ºÃ¢ Á¾·á
-			new Join_Frame(); //È¸¿ø°¡ÀÔ ¸Ş¼­µå È£Ãâ
+			this.setVisible(false); //ë©”ì¸ë©”ë‰´ì°½ ì¢…ë£Œ
+			new Join_Frame(); //íšŒì›ê°€ì… ë©”ì„œë“œ í˜¸ì¶œ
 
 		}else if(e.getSource() == loginBtn) {
-			System.out.println("[ÀÌº¥Æ® ¹ß»ı] - ·Î±×ÀÎ ¹öÆ° ¼±ÅÃ");
+			System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - ë¡œê·¸ì¸ ë²„íŠ¼ ì„ íƒ");
 			System.out.println(e.getSource());
-			this.setVisible(false); //¸ŞÀÎ¸Ş´ºÃ¢ Á¾·á
-			new Login_Frame(); //·Î±×ÀÎ ¼º°ø ½Ã new Main_Menu(); //È¸¿ø Àü¿ë ¸Ş´º·Î ÀÌµ¿
+			this.setVisible(false); //ë©”ì¸ë©”ë‰´ì°½ ì¢…ë£Œ
+			new Login_Frame(); //ë¡œê·¸ì¸ ì„±ê³µ ì‹œ new Main_Menu(); //íšŒì› ì „ìš© ë©”ë‰´ë¡œ ì´ë™
 
 		}else if(e.getSource() == howToBtn) {
-			System.out.println("[ÀÌº¥Æ® ¹ß»ı] - ¼Ò°³ ¹öÆ° ¼±ÅÃ");
+			System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - ì†Œê°œ ë²„íŠ¼ ì„ íƒ");
 			System.out.println(e.getSource());
-			new Intro_Frame(); //»ç¿ë¹ı ¾È³» ¸Ş¼­µå È£Ãâ
+			new Intro_Frame(); //ì‚¬ìš©ë²• ì•ˆë‚´ ë©”ì„œë“œ í˜¸ì¶œ
 
 		}else if(e.getSource() == exitBtn) {
-			System.out.println("[ÀÌº¥Æ® ¹ß»ı] - ³ª°¡±â ¹öÆ° ¼±ÅÃ");
+			System.out.println("[ì´ë²¤íŠ¸ ë°œìƒ] - ë‚˜ê°€ê¸° ë²„íŠ¼ ì„ íƒ");
 			System.out.println(e.getSource());
-			System.exit(0); //ÀüÃ¼ ÇÁ·Î±×·¥ Á¾·á
-			this.setVisible(false); //¸ŞÀÎ¸Ş´ºÃ¢ Á¾·á
+			System.exit(0); //ì „ì²´ í”„ë¡œê·¸ë¨ ì¢…ë£Œ
+			this.setVisible(false); //ë©”ì¸ë©”ë‰´ì°½ ì¢…ë£Œ
 		}
 
 	}

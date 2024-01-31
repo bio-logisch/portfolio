@@ -2,7 +2,7 @@ package GUI;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-class Calendar_Manager{ // 6*7¹è¿­¿¡ ³ªÅ¸³¾ ´Ş·Â °ªÀ» ±¸ÇÏ´Â class
+class Calendar_Manager{ // 6*7ë°°ì—´ì— ë‚˜íƒ€ë‚¼ ë‹¬ë ¥ ê°’ì„ êµ¬í•˜ëŠ” class
 	static final int CAL_WIDTH = 7;
 	final static int CAL_HEIGHT = 6;
 	int calDates[][] = new int[CAL_HEIGHT][CAL_WIDTH];
@@ -24,17 +24,17 @@ class Calendar_Manager{ // 6*7¹è¿­¿¡ ³ªÅ¸³¾ ´Ş·Â °ªÀ» ±¸ÇÏ´Â class
 		makeCalData(today);
 	}
 	public void makeCalData(Calendar cal){
-		// 1ÀÏÀÇ À§Ä¡¿Í ¸¶Áö¸· ³¯Â¥¸¦ ±¸ÇÔ 
+		// 1ì¼ì˜ ìœ„ì¹˜ì™€ ë§ˆì§€ë§‰ ë‚ ì§œë¥¼ êµ¬í•¨ 
 		int calStartingPos = (cal.get(Calendar.DAY_OF_WEEK)+7-(cal.get(Calendar.DAY_OF_MONTH))%7)%7;
 		if(calMonth == 1) calLastDate = calLastDateOfMonth[calMonth] + leapCheck(calYear);
 		else calLastDate = calLastDateOfMonth[calMonth];
-		// ´Ş·Â ¹è¿­ ÃÊ±âÈ­
+		// ë‹¬ë ¥ ë°°ì—´ ì´ˆê¸°í™”
 		for(int i = 0 ; i<CAL_HEIGHT ; i++){
 			for(int j = 0 ; j<CAL_WIDTH ; j++){
 				calDates[i][j] = 0;
 			}
 		}
-		// ´Ş·Â ¹è¿­¿¡ °ª Ã¤¿ö³Ö±â
+		// ë‹¬ë ¥ ë°°ì—´ì— ê°’ ì±„ì›Œë„£ê¸°
 		for(int i = 0, num = 1, k = 0 ; i<CAL_HEIGHT ; i++){
 			if(i == 0) k = calStartingPos;
 			else k = 0;
@@ -43,11 +43,11 @@ class Calendar_Manager{ // 6*7¹è¿­¿¡ ³ªÅ¸³¾ ´Ş·Â °ªÀ» ±¸ÇÏ´Â class
 			}
 		}
 	}
-	public int leapCheck(int year){ // À±³âÀÎÁö È®ÀÎÇÏ´Â ÇÔ¼ö
+	public int leapCheck(int year){ // ìœ¤ë…„ì¸ì§€ í™•ì¸í•˜ëŠ” í•¨ìˆ˜
 		if(year%4 == 0 && year%100 != 0 || year%400 == 0) return 1;
 		else return 0;
 	}
-	public void moveMonth(int mon){ // ÇöÀç´Ş·Î ºÎÅÍ n´Ş ÀüÈÄ¸¦ ¹Ş¾Æ ´Ş·Â ¹è¿­À» ¸¸µå´Â ÇÔ¼ö(1³âÀº +12, -12´Ş·Î ÀÌµ¿ °¡´É)
+	public void moveMonth(int mon){ // í˜„ì¬ë‹¬ë¡œ ë¶€í„° në‹¬ ì „í›„ë¥¼ ë°›ì•„ ë‹¬ë ¥ ë°°ì—´ì„ ë§Œë“œëŠ” í•¨ìˆ˜(1ë…„ì€ +12, -12ë‹¬ë¡œ ì´ë™ ê°€ëŠ¥)
 		calMonth += mon;
 		if(calMonth>11) while(calMonth>11){
 			calYear++;

@@ -3,7 +3,8 @@
 
 edu_project : MVC2 디자인 패턴을 활용한 공공교육 연계 및 커뮤니티 웹 서비스
 "새싹 청소년 교육복지 센터"
-- 개발환경 :
+- 개발환경 : Spring, Mybatis, RESTful API, Ajax, jQuery, JavaScript, HTML5, CSS3, Maven,
+             Apache-Tomcat, 전자정부 표준프레임워크, 카카오 API
 - 개발목적 : 
 디지털 교육 소외 청소년 대상
 강좌신청 관리 시스템, 교육 정보 제공을

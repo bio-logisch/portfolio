@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.example.sample.service.impl.MemberMapper">
+
+	<insert id="insertOne" parameterType="MemberVO">
+		insert into member
+		values(#{m_id},#{m_pw},#{m_name},#{m_phone}, default, default)
+	</insert>
+
+	<select id="selectOne" resultType="MemberVO">
+		select * from member where m_id=#{m_id}
+	</select>
+	
+	<select id="selectOneforModify" parameterType="String" resultType="MemberVO">
+		select * from member where m_id=#{id}
+	</select>
+
+	<delete id="deleteOne" parameterType="String">
+		delete from member where
+		m_id=#{id}
+	</delete>
+
+	<update id="updateOne" parameterType="MemberVO">
+		update member set m_pw=#{m_pw},m_name=#{m_name},m_phone=#{m_phone}
+		where m_id=#{m_id}
+	</update>
+	
+	<select id="selectCnt" resultType="int">
+		select cnt(*) from member where m_id=#{id}
+	</select>
+
+</mapper>

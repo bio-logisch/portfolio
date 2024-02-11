@@ -1,0 +1,23 @@
+프로젝트 1 소개 > 
+
+프로젝트명 : MVC2 디자인 패턴을 활용한 공공교육 연계 및 커뮤니티 웹 서비스
+            "새싹청소년교육복지센터"
+개발기간 : 2023.12.28 ~ 2024.01.24(4주)
+개발인원 : 2명
+개발환경 : 
+- Language : Java(JDK 1.8), HTML5, CSS3, JavaScript
+- Server : Apache 2.0, Apache Tomcat 8.5
+- Framework : 전자정부 표준프레임워크(egovFrame) 3.10.0, MyBatis 3.2(Persistance FW)
+- IDE : Eclipse 4.8.0, VisualStudioCode 1.85.1, SQL Developer 18.4.0.376
+- DB : Oracle 11g
+- API : 카카오 API(로그인, 맵), Restful API(JSON)
+- Library : JQuery 3.4.1, Spring Security 4.2.13.Release, lombok 1.18.12
+- 형상관리 : Git Hub
+- Build tool : Maven 4.0.0
+
+구현기능 : 
+- 회원관리 : 회원가입 · 탈퇴, 마이페이지 방문, 회원정보 수정, 신청 강좌 조회, 로그인/로그아웃
+- 수강후기 : 수강후기 목록조회, 선택후기 상세조회, 후기 작성, 수정, 삭제 *수강신청한 회원만 가능
+- 강좌신청관리 : 강죄목록조회, 선택강좌 상세조회, 강좌 신청, 취소, 수강장소 확인 
+                *지도 바로보기, 카카오맵으로 이동, 길찾기
+- 강좌별 댓글 : 댓글 전체조회, 작성, 수정, 삭제 *회원만 가능

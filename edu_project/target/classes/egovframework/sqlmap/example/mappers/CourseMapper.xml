@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.example.sample.service.impl.CourseMapper">
+
+	<select id="selectCourse" parameterType="String" resultType="CourseVO">
+			select * from course where c_num=#{vno}
+	</select> 
+
+	<select id="selectCourseList"  resultType="CourseVO">
+		select t.* from (select sub.*, rownum as rnum 
+		from (select * from course order by c_num) sub) t
+		where rnum between #{startNo} and #{endNo}
+	</select>
+	
+	<select id="selectCourseListTotCnt"  resultType="int">
+			select count(*) from course
+	</select>
+
+</mapper>

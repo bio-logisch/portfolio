@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.example.sample.service.impl.ReplyMapper">
+
+	<insert id="insertOne" parameterType="ReplyVO">
+		insert into reply
+		values(reply_seq.nextval,#{c_num},#{m_id},default,#{rep_content})
+	</insert>
+
+	<select id="selectAll" parameterType="String" resultType="ReplyVO">
+		select * from reply where c_num=#{vno}
+	</select>
+	
+	<update id="updateOne" parameterType="ReplyVO">
+		update reply set rep_content=#{rep_content} 
+		where rep_num=#{rep_num}
+	</update>
+
+
+	<delete id="deleteOne" parameterType="String">
+		delete from reply where rep_num=#{rep_num}
+	</delete>
+</mapper>
